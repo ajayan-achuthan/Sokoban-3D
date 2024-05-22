@@ -1,67 +1,89 @@
+import kivy
 from kivy.app import App
-from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.button import Button
 from kivy.uix.label import Label
-from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.widget import Widget
-from kivy.graphics import Rectangle, Color
+from kivy.properties import NumericProperty, ListProperty
+from kivy.uix.screenmanager import ScreenManager, Screen
 
-class SokobanGame(Widget):
+kivy.require('2.1.0')
+
+class SokobanGame(GridLayout):
     def __init__(self, **kwargs):
         super(SokobanGame, self).__init__(**kwargs)
+        self.direction = {'up':[-1,0],'down':[1,0],'left':[0,-1],'right':[0,1]}
         self.cols = 5
         self.rows = 5
-        self.cell_size = 50
-        self.init_game()
-        
-    def init_game(self):
-        self.clear_widgets()
-        self.canvas.clear()
         self.level_data = [
             "#####",
             "#@$.#",
             "#   #",
-            "#@  #",
+            "#   #",
             "#####"
         ]
-        
-        with self.canvas:
-            for row in range(self.rows):
-                for col in range(self.cols):
-                    cell = self.level_data[row][col]
-                    x = col * self.cell_size
-                    y = (self.rows - row - 1) * self.cell_size
-                    if cell == "#":
-                        Color(0, 0, 0)
-                    elif cell == "@":
-                        Color(0, 0, 1)
-                    elif cell == "$":
-                        Color(1, 0, 0)
-                    elif cell == ".":
-                        Color(0, 1, 0)
-                    else:
-                        Color(1, 1, 1)
-                    Rectangle(pos=(x, y), size=(self.cell_size, self.cell_size))
-                    
-class MainScreen(Screen):
-    pass
+        for i in range(len(self.level_data)):
+            self.level_data[i] = list(self.level_data[i])
+        self.player_pos = [0,0]
+        for i in range(len(self.level_data)):
+            for j in range(len(self.level_data[i])):
+                if self.level_data[i][j] == '@':
+                    self.player_pos = [i,j]
+        self.build_board()
 
-class GameScreen(Screen):
-    def __init__(self, **kwargs):
-        super(GameScreen, self).__init__(**kwargs)
-        self.game = SokobanGame()
-        self.add_widget(self.game)
+    def build_board(self):
+        self.clear_widgets()
+        for row in range(self.rows):
+            for col in range(self.cols):
+                if self.level_data[row][col] == '#':
+                    self.add_widget(Button(text='#', background_color=(1, 1, 0, 1)))
+                elif self.level_data[row][col] == '@':
+                    self.add_widget(Button(text='P', background_color=(1, 1, 0, 1)))
+                elif self.level_data[row][col] == '$':
+                    self.add_widget(Button(text='B', background_color=(1, 0.5, 0, 1)))
+                elif self.level_data[row][col] == '.':
+                    self.add_widget(Button(text='G', background_color=(1, 1, 0, 1)))
+                else:
+                    self.add_widget(Button(background_color=(0.5, 0.5, 0.5, 1)))
+
+    def move_player(self, direction):
+        x, y = self.player_pos
+        prevx,prevy = x,y
+        x, y = x+self.direction[direction][0], y+self.direction[direction][1]
+
+        if 0 <= x < self.rows and 0 <= y < self.cols:
+            if self.level_data[x][y] == '$':
+                self.move_box(x, y, direction)
+            else:
+                self.player_pos = [x,y]
+                self.level_data[prevx][prevy] =' '
+                self.level_data[x][y] ='@'
+                self.build_board()
+
+    def move_box(self, x, y, direction):
+        prevx,prevy = x,y
+        x, y = x+self.direction[direction][0], y+self.direction[direction][1]
+
+        if 0 <= x < self.rows and 0 <= y < self.cols and self.level_data[x][y] != '$':
+            self.level_data[x][y] = '$'
+            self.player_pos = [prevx,prevy]
+            self.level_data[prevx][prevy] ='@'
+            self.build_board()
 
 class SokobanApp(App):
     def build(self):
-        sm = ScreenManager()
-        sm.add_widget(MainScreen(name='main'))
-        sm.add_widget(GameScreen(name='game'))
-        return sm
+        root = GridLayout(cols=1)
+        game = SokobanGame()
+        root.add_widget(game)
 
-    def new_game(self, instance):
-        self.root.current = 'game'
+        buttons = GridLayout(cols=4, size_hint_y=None, height=50)
+        buttons.add_widget(Button(text='Up', on_press=lambda x: game.move_player('up')))
+        buttons.add_widget(Button(text='Left', on_press=lambda x: game.move_player('left')))
+        buttons.add_widget(Button(text='Right', on_press=lambda x: game.move_player('right')))
+        buttons.add_widget(Button(text='Down', on_press=lambda x: game.move_player('down')))
+
+        root.add_widget(buttons)
+        return root
 
 if __name__ == '__main__':
     SokobanApp().run()

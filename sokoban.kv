@@ -2,6 +2,7 @@ ScreenManager:
     MainScreen:
     NewGameScreen:
     LevelScreen:
+    GameScreen:
 
 <MainScreen>:
     name: 'main'
@@ -99,7 +100,7 @@ ScreenManager:
                     text: 'Classic 14/90'
                     size_hint_y: None
                     height: 50
-                    on_release: app.show_levels(self)
+                    on_release: app.show_levels(self,'Classic')
 
                 Button:
                     text: 'MicroCosmos 5/40'
@@ -184,6 +185,7 @@ ScreenManager:
                         text: '1'
                         size_hint_y: None
                         height: 50
+                        on_release: app.show_game(self,1)
 
                     Button:
                         text: '2'
