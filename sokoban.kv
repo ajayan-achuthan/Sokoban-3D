@@ -1,0 +1,347 @@
+ScreenManager:
+    MainScreen:
+    NewGameScreen:
+    LevelScreen:
+
+<MainScreen>:
+    name: 'main'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+
+        Button:
+            text: 'New game'
+            size_hint_y: None
+            height: 50
+            on_release: app.new_game(self)
+
+        Button:
+            text: 'Continue game'
+            size_hint_y: None
+            height: 50
+            on_release: app.continue_game(self)
+
+        Button:
+            text: 'Settings'
+            size_hint_y: None
+            height: 50
+            on_release: app.settings(self)
+
+        Button:
+            text: 'High scores'
+            size_hint_y: None
+            height: 50
+            on_release: app.high_scores(self)
+
+        Button:
+            text: 'Achievements'
+            size_hint_y: None
+            height: 50
+            on_release: app.achievements(self)
+
+        Button:
+            text: 'Landscape orientation'
+            size_hint_y: None
+            height: 50
+            on_release: app.landscape_orientation(self)
+
+        Button:
+            text: 'Exit'
+            size_hint_y: None
+            height: 50
+            on_release: app.exit(self)
+
+        BoxLayout:
+            size_hint_y: None
+            height: 60
+            spacing: 10
+
+            Button:
+                text: 'Cloud Icon'
+                size_hint: 0.2, 1
+
+            Button:
+                text: 'Gamepad Icon'
+                size_hint: 0.2, 1
+
+            AnchorLayout:
+                size_hint: 0.2, 1
+
+            Button:
+                text: 'Cloud Icon'
+                size_hint: 0.2, 1
+
+            Button:
+                text: 'Thumbs Up Icon'
+                size_hint: 0.2, 1
+
+<NewGameScreen>:
+    name: 'new_game'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+
+        Label:
+            text: 'CHOOSE A COLLECTION'
+            size_hint_y: None
+            height: 50
+
+        ScrollView:
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: 10
+
+                Button:
+                    text: 'Classic 14/90'
+                    size_hint_y: None
+                    height: 50
+                    on_release: app.show_levels(self)
+
+                Button:
+                    text: 'MicroCosmos 5/40'
+                    size_hint_y: None
+                    height: 50
+                    on_release: app.show_levels(self)
+
+                Button:
+                    text: 'Sasquatch 0/50'
+                    size_hint_y: None
+                    height: 50
+                    on_release: app.show_levels(self)
+
+                Button:
+                    text: 'Microban 12/155'
+                    size_hint_y: None
+                    height: 50
+                    on_release: app.show_levels(self)
+
+                Button:
+                    text: 'NaboCosmos 2/40'
+                    size_hint_y: None
+                    height: 50
+                    on_release: app.show_levels(self)
+
+                Button:
+                    text: 'Yoshio Murase 0/54'
+                    size_hint_y: None
+                    height: 50
+                    on_release: app.show_levels(self)
+
+                Button:
+                    text: 'Sokogen-990602 2/78'
+                    size_hint_y: None
+                    height: 50
+                    on_release: app.show_levels(self)
+
+                Button:
+                    text: 'PicoCosmos 0/20'
+                    size_hint_y: None
+                    height: 50
+                    on_release: app.show_levels(self)
+
+                Button:
+                    text: 'Mas Sasquatch 0/50'
+                    size_hint_y: None
+                    height: 50
+                    on_release: app.show_levels(self)
+
+        Button:
+            text: 'Back'
+            size_hint_y: None
+            height: 50
+            on_release: app.back_to_main(self)
+
+<LevelScreen>:
+    name: 'levels'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+
+        Label:
+            text: 'SASQUATCH'
+            size_hint_y: None
+            height: 50
+
+        ScrollView:
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: 10
+
+                GridLayout:
+                    cols: 4
+                    size_hint_y: None
+                    height: self.minimum_height
+                    spacing: 10
+
+                    Button:
+                        text: '1'
+                        size_hint_y: None
+                        height: 50
+
+                    Button:
+                        text: '2'
+                        size_hint_y: None
+                        height: 50
+
+                    Button:
+                        text: '3'
+                        size_hint_y: None
+                        height: 50
+
+                    Button:
+                        text: '4'
+                        size_hint_y: None
+                        height: 50
+
+                    Button:
+                        text: '5'
+                        size_hint_y: None
+                        height: 50
+
+                    Button:
+                        text: '6'
+                        size_hint_y: None
+                        height: 50
+
+                    Button:
+                        text: '7'
+                        size_hint_y: None
+                        height: 50
+
+                    Button:
+                        text: '8'
+                        size_hint_y: None
+                        height: 50
+
+                    Button:
+                        text: '9'
+                        size_hint_y: None
+                        height: 50
+
+                    Button:
+                        text: '10'
+                        size_hint_y: None
+                        height: 50
+
+                    Button:
+                        text: '11'
+                        size_hint_y: None
+                        height: 50
+
+                    Button:
+                        text: '12'
+                        size_hint_y: None
+                        height: 50
+
+                    Button:
+                        text: '13'
+                        size_hint_y: None
+                        height: 50
+
+                    Button:
+                        text: '14'
+                        size_hint_y: None
+                        height: 50
+
+                    Button:
+                        text: '15'
+                        size_hint_y: None
+                        height: 50
+
+                    Button:
+                        text: '16'
+                        size_hint_y: None
+                        height: 50
+
+                    Button:
+                        text: '17'
+                        size_hint_y: None
+                        height: 50
+
+                    Button:
+                        text: '18'
+                        size_hint_y: None
+                        height: 50
+
+                    Button:
+                        text: '19'
+                        size_hint_y: None
+                        height: 50
+
+                    Button:
+                        text: '20'
+                        size_hint_y: None
+                        height: 50
+
+                    Button:
+                        text: '21'
+                        size_hint_y: None
+                        height: 50
+
+                    Button:
+                        text: '22'
+                        size_hint_y: None
+                        height: 50
+
+                    Button:
+                        text: '23'
+                        size_hint_y: None
+                        height: 50
+
+                    Button:
+                        text: '24'
+                        size_hint_y: None
+                        height: 50
+
+                    Button:
+                        text: '25'
+                        size_hint_y: None
+                        height: 50
+
+                    Button:
+                        text: '26'
+                        size_hint_y: None
+                        height: 50
+
+                    Button:
+                        text: '27'
+                        size_hint_y: None
+                        height: 50
+
+                    Button:
+                        text: '28'
+                        size_hint_y: None
+                        height: 50
+
+                    Button:
+                        text: '29'
+                        size_hint_y: None
+                        height: 50
+
+                    Button:
+                        text: '30'
+                        size_hint_y: None
+                        height: 50
+
+                    Button:
+                        text: '31'
+                        size_hint_y: None
+                        height: 50
+
+                    Button:
+                        text: '32'
+                        size_hint_y: None
+                        height: 50
+
+        Button:
+            text: 'Back'
+            size_hint_y: None
+            height: 50
+            on_release: app.back_to_new_game(self)
