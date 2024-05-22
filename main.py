@@ -18,18 +18,20 @@ class NewGameScreen(Screen):
     pass
 
 class LevelScreen(Screen):
-    def go_to_game(self, instance):
-        self.manager.current = 'game'
-        self.manager.get_screen('game').update_profile(row=5)
-
-
+    pass
+        
 class GameScreen(Screen):
+    rows = NumericProperty()
     def __init__(self,**kwargs):
         super().__init__(**kwargs)
+        pass
+    
+    def update_game(self, rows,cols,matrix):
+        self.rows = rows
+        self.cols = cols
+        self.matrix = matrix
         root = GridLayout(cols=1)
-        self.rows = 5
-        print(self.rows,"dfaad")
-        game = SokobanGame()
+        game = SokobanGame(rows=rows,cols=cols,matrix=matrix)
         root.add_widget(game)
 
         buttons = GridLayout(cols=4, size_hint_y=None, height=50)
@@ -40,9 +42,6 @@ class GameScreen(Screen):
 
         root.add_widget(buttons)
         self.add_widget(root)
-        
-    def update_profile(self, rows):
-        self.rows = rows
 
 class SokobanApp(App):
     def __init__(self, **kwargs):
@@ -56,9 +55,7 @@ class SokobanApp(App):
         sm.add_widget(MainScreen(name='main'))
         sm.add_widget(NewGameScreen(name='new_game'))
         sm.add_widget(LevelScreen(name='levels'))
-        game_screen = GameScreen(name='game')
-        game_screen.rows = "hi"
-        sm.add_widget(game_screen)
+        sm.add_widget(GameScreen(name='game'))
         return sm
 
     def new_game(self, instance):
@@ -76,7 +73,9 @@ class SokobanApp(App):
 
     def show_game(self,instance,level):
         self.width,self.height,self.matrix =level_finder(self.collection,level-1)
+        
         self.root.current = 'game'
+        self.root.get_screen('game').update_game(self.height,self.width,self.matrix)
 
 if __name__ == '__main__':
     SokobanApp().run()

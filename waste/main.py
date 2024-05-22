@@ -26,6 +26,7 @@ class HomeScreen(Screen):
 
     def go_to_result(self, button_text):
         # Passing the button text as an argument to the result screen
+        
         self.manager.current = 'result'
         self.manager.get_screen('result').update_result(button_text)
 

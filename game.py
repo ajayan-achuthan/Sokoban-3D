@@ -9,20 +9,18 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 import queue
 
 class SokobanGame(GridLayout):
-    def __init__(self, **kwargs):
+    def __init__(self, rows,cols,matrix,**kwargs):
         super(SokobanGame, self).__init__(**kwargs)
         self.queue = queue.LifoQueue()
-        self.cols = 5
-        self.rows = 5
-        self.matrix = [
-            "#####",
-            "#@$.#",
-            "#   #",
-            "#   #",
-            "#####"
-        ]
-        for i in range(len(self.matrix)):
-            self.matrix[i] = list(self.matrix[i])
+        self.cols = cols
+        self.rows = rows
+        self.matrix = [[' 'for i in range(cols)]for j in range(rows)]
+        print(rows,cols,matrix)
+        for i in range(len(matrix)):
+            matrix[i] = list(matrix[i])
+        for i in range(len(matrix)):
+            for j in range(len(matrix[i])):
+                self.matrix[i][j] = matrix[i][j]
         self.print_game()
 
     def is_valid_value(self,char):
