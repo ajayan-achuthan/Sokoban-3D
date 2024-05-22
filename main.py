@@ -18,14 +18,16 @@ class NewGameScreen(Screen):
     pass
 
 class LevelScreen(Screen):
-    pass
+    def go_to_game(self, instance):
+        self.manager.current = 'game'
+        self.manager.get_screen('game').update_profile(row=5)
 
 
 class GameScreen(Screen):
-    rows = StringProperty()
     def __init__(self,**kwargs):
         super().__init__(**kwargs)
         root = GridLayout(cols=1)
+        self.rows = 5
         print(self.rows,"dfaad")
         game = SokobanGame()
         root.add_widget(game)
@@ -38,6 +40,9 @@ class GameScreen(Screen):
 
         root.add_widget(buttons)
         self.add_widget(root)
+        
+    def update_profile(self, rows):
+        self.rows = rows
 
 class SokobanApp(App):
     def __init__(self, **kwargs):

@@ -12,9 +12,15 @@ class SokobanGame(GridLayout):
     def __init__(self, **kwargs):
         super(SokobanGame, self).__init__(**kwargs)
         self.queue = queue.LifoQueue()
-        self.cols = cols
-        self.rows = rows
-        self.matrix = matrix
+        self.cols = 5
+        self.rows = 5
+        self.matrix = [
+            "#####",
+            "#@$.#",
+            "#   #",
+            "#   #",
+            "#####"
+        ]
         for i in range(len(self.matrix)):
             self.matrix[i] = list(self.matrix[i])
         self.print_game()
