@@ -17,9 +17,9 @@ were interesting but too easy to include in my regular sets.
     <Level Id="1" Width="6" Height="7">
       <L>####</L>
       <L># .#</L>
-      <L>#  ###</L>
-      <L>#*@  #</L>
-      <L>#  $ #</L>
+      <L># $###</L>
+      <L># @  #</L>
+      <L>#    #</L>
       <L>#  ###</L>
       <L>####</L>
     </Level>

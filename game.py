@@ -99,6 +99,15 @@ class SokobanGame(GridLayout):
                 self.move_box(current[0]+movement[0],current[1]+movement[1],movement[0] * -1,movement[1] * -1)
             else:
                 self.move(movement[0] * -1,movement[1] * -1, False)
+    def reset(self):
+        while not self.queue.empty():
+            movement = self.queue.get()
+            if movement[2]:
+                current = self.worker()
+                self.move(movement[0] * -1,movement[1] * -1, False)
+                self.move_box(current[0]+movement[0],current[1]+movement[1],movement[0] * -1,movement[1] * -1)
+            else:
+                self.move(movement[0] * -1,movement[1] * -1, False)
 
     def move(self,x,y,save):
         if self.can_move(x,y):
@@ -167,8 +176,10 @@ class SokobanGame(GridLayout):
         self.print_game()
         if self.is_completed(): 
             #display_end(screen)
-            print("finish")
+            app = App.get_running_app()
+            app.show_completed()
 
+    
     def print_game(self):
         self.clear_widgets()
         for row in range(self.rows):

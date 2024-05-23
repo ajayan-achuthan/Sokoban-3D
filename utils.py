@@ -9,3 +9,7 @@ def level_finder(collection,level):
         level.append(child.text)
     return width,height,level
 
+def count_levels(collection):
+    tree = ET.parse(f'collections/{collection}.slc')
+    root = tree.getroot()
+    return len(root[4])

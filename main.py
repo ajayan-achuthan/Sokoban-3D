@@ -9,7 +9,7 @@ from kivy.properties import NumericProperty, ListProperty,StringProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
 import queue
 from game import SokobanGame
-from utils import level_finder
+from utils import level_finder,count_levels
 from kivy.clock import mainthread
 
 class MainScreen(Screen):
@@ -21,14 +21,12 @@ class NewGameScreen(Screen):
 class LevelScreen(Screen):
     @mainthread
     def on_enter(self):
-        for i in range(10): 
-            app = App.get_running_app()
-            button = Button(text=str(i),size_hint_y= None, height= 50,on_release=lambda a:app.show_game(i+1))
-            #button.bind()
+        app = App.get_running_app()
+        for i in range(app.no_levels): 
+            button = Button(text=str(i+1),size_hint_y= None, height= 50,on_release=lambda a,curr=i:app.show_game(curr+1))
             self.ids.grid.add_widget(button)
 
 class GameScreen(Screen):
-    rows = NumericProperty()
     def __init__(self,**kwargs):
         super().__init__(**kwargs)
         pass
@@ -37,16 +35,29 @@ class GameScreen(Screen):
         self.rows = rows
         self.cols = cols
         self.matrix = matrix
+        app = App.get_running_app()
         root = GridLayout(cols=1)
         game = SokobanGame(rows=rows,cols=cols,matrix=matrix)
         root.add_widget(game)
 
-        buttons = GridLayout(cols=4, size_hint_y=None, height=50)
+        buttons = GridLayout(cols=7, size_hint_y=None, height=50)
         buttons.add_widget(Button(text='Up', on_press=lambda x: game.move(0,-1, True)))
         buttons.add_widget(Button(text='Left', on_press=lambda x: game.move(-1,0, True)))
         buttons.add_widget(Button(text='Right', on_press=lambda x: game.move(1,0, True)))
         buttons.add_widget(Button(text='Down', on_press=lambda x: game.move(0,1, True)))
+        buttons.add_widget(Button(text='Undo', on_press=lambda x: game.unmove()))
+        buttons.add_widget(Button(text='Reset', on_press=lambda x: game.reset()))
+        buttons.add_widget(Button(text='Back', on_press=lambda x: app.back_to_show_levels()))
+        root.add_widget(buttons)
+        self.add_widget(root)
 
+class GameCompleted(Screen):
+    def __init__(self,**kwargs):
+        super().__init__(**kwargs)
+        root = GridLayout(cols=1)
+        app = App.get_running_app()
+        buttons = GridLayout(cols=1, size_hint_y=None, height=50)
+        buttons.add_widget(Button(text='Back', on_press=lambda x: app.back_to_show_levels()))
         root.add_widget(buttons)
         self.add_widget(root)
 
@@ -54,6 +65,7 @@ class SokobanApp(App):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.collection = ''
+        self.no_levels = 0
         self.rows = 0
         self.cols = 0
         self.matrix = ''
@@ -63,6 +75,7 @@ class SokobanApp(App):
         sm.add_widget(NewGameScreen(name='new_game'))
         sm.add_widget(LevelScreen(name='levels'))
         sm.add_widget(GameScreen(name='game'))
+        sm.add_widget(GameCompleted(name='complete'))
         return sm
 
     def new_game(self, instance):
@@ -70,7 +83,16 @@ class SokobanApp(App):
 
     def show_levels(self, instance, collection):
         self.collection = collection
+        self.no_levels = count_levels(collection)
         self.root.current = 'levels'
+
+    def show_game(self,level):
+        self.width,self.height,self.matrix =level_finder(self.collection,level-1)
+        self.root.current = 'game'
+        self.root.get_screen('game').update_game(self.height,self.width,self.matrix)
+
+    def show_completed(self):
+        self.root.current = 'complete'
 
     def back_to_main(self, instance):
         self.root.current = 'main'
@@ -78,11 +100,8 @@ class SokobanApp(App):
     def back_to_new_game(self, instance):
         self.root.current = 'new_game'
 
-    def show_game(self,level):
-        self.width,self.height,self.matrix =level_finder(self.collection,level-1)
-        
-        self.root.current = 'game'
-        self.root.get_screen('game').update_game(self.height,self.width,self.matrix)
+    def back_to_show_levels(self):
+        self.root.current = 'levels'
 
 if __name__ == '__main__':
     SokobanApp().run()
