@@ -10,6 +10,7 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 import queue
 from game import SokobanGame
 from utils import level_finder
+from kivy.clock import mainthread
 
 class MainScreen(Screen):
     pass
@@ -18,8 +19,13 @@ class NewGameScreen(Screen):
     pass
 
 class LevelScreen(Screen):
-    pass
-        
+    @mainthread
+    def on_enter(self):
+        for i in range(10):            
+            button = Button(text=str(i),size_hint_y= None, height= 50)
+            button.bind(on_release=SokobanApp.show_game(1))
+            self.ids.grid.add_widget(button)
+
 class GameScreen(Screen):
     rows = NumericProperty()
     def __init__(self,**kwargs):
