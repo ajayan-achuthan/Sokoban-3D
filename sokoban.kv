@@ -53,30 +53,6 @@ ScreenManager:
             height: 50
             on_release: app.exit(self)
 
-        BoxLayout:
-            size_hint_y: None
-            height: 60
-            spacing: 10
-
-            Button:
-                text: 'Cloud Icon'
-                size_hint: 0.2, 1
-
-            Button:
-                text: 'Gamepad Icon'
-                size_hint: 0.2, 1
-
-            AnchorLayout:
-                size_hint: 0.2, 1
-
-            Button:
-                text: 'Cloud Icon'
-                size_hint: 0.2, 1
-
-            Button:
-                text: 'Thumbs Up Icon'
-                size_hint: 0.2, 1
-
 <NewGameScreen>:
     name: 'new_game'
     BoxLayout:
@@ -111,7 +87,7 @@ ScreenManager:
         spacing: 10
 
         Label:
-            text: 'SASQUATCH'
+            text: root.collection_name
             size_hint_y: None
             height: 50
 

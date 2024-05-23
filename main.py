@@ -18,6 +18,7 @@ class MainScreen(Screen):
 
 class NewGameScreen(Screen):
     def on_enter(self):
+        self.ids.collection_grid.clear_widgets()
         slcs = utils.available_collections()
         app = App.get_running_app()
         for i in slcs:
@@ -26,8 +27,11 @@ class NewGameScreen(Screen):
             self.ids.collection_grid.add_widget(button)
 
 class LevelScreen(Screen):
+    collection_name = StringProperty()
     def on_enter(self):
         app = App.get_running_app()
+        self.collection_name = app.collection.upper()
+        self.ids.level_grid.clear_widgets()
         for i in range(app.no_levels):
             bg_color = utils.is_completed(app.collection,i+1)
             button = Button(text=str(i+1),size_hint_y= None, height= 50, background_color=bg_color,on_release=lambda a,curr=i:app.show_game(curr+1))
@@ -59,8 +63,10 @@ class GameCompleted(Screen):
         super().__init__(**kwargs)
         root = GridLayout(cols=1)
         app = App.get_running_app()
-        buttons = GridLayout(cols=1, size_hint_y=None, height=50)
-        buttons.add_widget(Button(text='Back', on_press=lambda x: app.back_to_show_levels()))
+        buttons = GridLayout(cols=3, size_hint_y=None, height=50)
+        buttons.add_widget(Button(text='Next level', on_press=lambda x: app.show_game(app.level+1)))
+        buttons.add_widget(Button(text='Restart', on_press=lambda x: app.show_game(app.level)))
+        buttons.add_widget(Button(text='Menu', on_press=lambda x: app.back_to_show_levels()))
         root.add_widget(buttons)
         self.add_widget(root)
 

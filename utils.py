@@ -2,6 +2,8 @@ import os
 import xml.etree.ElementTree as ET
 from kivy.storage.jsonstore import JsonStore
 
+store = JsonStore('output/completed.json')
+
 def level_finder(collection,level):
     tree = ET.parse(f'collections/{collection}.slc')
     root = tree.getroot()
@@ -23,7 +25,6 @@ def available_collections():
     return slcs
 
 def add_completed(collection,level):
-    store = JsonStore('output/completed.json')
     if collection in store.keys():
         completed = store.get(collection)['completed']
         if level not in completed:
@@ -33,7 +34,6 @@ def add_completed(collection,level):
         store.put(collection,completed = [level])
 
 def is_completed(collection,level):
-    store = JsonStore('output/completed.json')
     if collection in store.keys():
         completed = store.get(collection)['completed']
         if level in completed:
@@ -44,7 +44,7 @@ def is_completed(collection,level):
         return (0.5, 0.5, 0.5, 1)
     
 def count_completed(collection):
-    store = JsonStore('output/completed.json')
+    
     if collection in store.keys():
         completed = len(store.get(collection)['completed'])
     else:
