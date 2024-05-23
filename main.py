@@ -1,5 +1,6 @@
 import kivy
 from kivy.app import App
+from kivy.core.window import Window
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.button import Button
@@ -44,9 +45,9 @@ class GameScreen(Screen):
         self.matrix = matrix
         app = App.get_running_app()
         root = GridLayout(cols=1)
-        game = SokobanGame(rows=rows,cols=cols,matrix=matrix)
+        print(root.size,root.height,root.width,"dfsf")
+        game = SokobanGame(rows=rows,cols=cols,matrix=matrix,size_hint=(1, 1))
         root.add_widget(game)
-
         buttons = GridLayout(cols=7, size_hint_y=None, height=50)
         buttons.add_widget(Button(text='Up', on_press=lambda x: game.move(0,-1, True)))
         buttons.add_widget(Button(text='Left', on_press=lambda x: game.move(-1,0, True)))
@@ -73,11 +74,7 @@ class GameCompleted(Screen):
 class SokobanApp(App):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # self.collection = ''
-        # self.no_levels = 0
-        # self.rows = 0
-        # self.cols = 0
-        # self.matrix = ''
+        pass
     def build(self):
         sm = ScreenManager()
         sm.add_widget(MainScreen(name='main'))
@@ -115,4 +112,5 @@ class SokobanApp(App):
         self.root.current = 'levels'
 
 if __name__ == '__main__':
+    Window.size = (375, 800)
     SokobanApp().run()

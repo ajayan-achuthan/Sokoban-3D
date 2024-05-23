@@ -6,11 +6,14 @@ from kivy.uix.label import Label
 from kivy.uix.widget import Widget
 from kivy.properties import NumericProperty, ListProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.image import Image
+from kivy.core.window import Window
 import queue
 
 class SokobanGame(GridLayout):
     def __init__(self, rows,cols,matrix,**kwargs):
         super(SokobanGame, self).__init__(**kwargs)
+        self.image_path = f'images/'
         self.queue = queue.LifoQueue()
         self.cols = cols
         self.rows = rows
@@ -181,19 +184,21 @@ class SokobanGame(GridLayout):
     
     def print_game(self):
         self.clear_widgets()
+        window_size = Window.width
+        cell_size = (int(window_size/self.cols),int(window_size/self.cols))
         for row in range(self.rows):
             for col in range(self.cols):
                 if self.matrix[row][col] == '#':
-                    self.add_widget(Button(text='#', background_color=(1, 1, 0, 1)))
+                    self.add_widget(Image(source =self.image_path+'wall.png',allow_stretch=True,size = cell_size))
                 elif self.matrix[row][col] == '@':
-                    self.add_widget(Button(text='P', background_color=(1, 1, 0, 1)))
+                    self.add_widget(Image(source =self.image_path+'worker.png',allow_stretch=True,size = cell_size))
                 elif self.matrix[row][col] == '$':
-                    self.add_widget(Button(text='B', background_color=(1, 0.5, 0, 1)))
+                    self.add_widget(Image(source =self.image_path+'box.png',allow_stretch=True,size = cell_size))
                 elif self.matrix[row][col] == '.':
-                    self.add_widget(Button(text='G', background_color=(1, 1, 0, 1)))
+                    self.add_widget(Image(source =self.image_path+'dock.png',allow_stretch=True,size = cell_size))
                 elif self.matrix[row][col] == '*':
-                    self.add_widget(Button(text='F', background_color=(1, 1, 0, 1)))
+                    self.add_widget(Image(source =self.image_path+'box_docked.png',allow_stretch=True,size = cell_size))
                 elif self.matrix[row][col] == '+':
-                    self.add_widget(Button(text='P.', background_color=(1, 1, 0, 1)))
+                    self.add_widget(Image(source =self.image_path+'worker_dock.png',allow_stretch=True,size = cell_size))
                 else:
-                    self.add_widget(Button(background_color=(0.5, 0.5, 0.5, 1)))
+                    self.add_widget(Image(source =self.image_path+'floor.png',allow_stretch=True,size = cell_size))
