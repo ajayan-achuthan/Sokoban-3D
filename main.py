@@ -21,9 +21,10 @@ class NewGameScreen(Screen):
 class LevelScreen(Screen):
     @mainthread
     def on_enter(self):
-        for i in range(10):            
-            button = Button(text=str(i),size_hint_y= None, height= 50)
-            button.bind(on_release=SokobanApp.show_game(1))
+        for i in range(10): 
+            app = App.get_running_app()
+            button = Button(text=str(i),size_hint_y= None, height= 50,on_release=lambda a:app.show_game(i+1))
+            #button.bind()
             self.ids.grid.add_widget(button)
 
 class GameScreen(Screen):
@@ -77,7 +78,7 @@ class SokobanApp(App):
     def back_to_new_game(self, instance):
         self.root.current = 'new_game'
 
-    def show_game(self,instance,level):
+    def show_game(self,level):
         self.width,self.height,self.matrix =level_finder(self.collection,level-1)
         
         self.root.current = 'game'
