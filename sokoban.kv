@@ -91,64 +91,11 @@ ScreenManager:
 
         ScrollView:
             BoxLayout:
+                id: collection_grid
                 orientation: 'vertical'
                 size_hint_y: None
                 height: self.minimum_height
                 spacing: 10
-
-                Button:
-                    text: 'Classic 14/90'
-                    size_hint_y: None
-                    height: 50
-                    on_release: app.show_levels(self,'Classic')
-
-                Button:
-                    text: 'MicroCosmos 5/40'
-                    size_hint_y: None
-                    height: 50
-                    on_release: app.show_levels(self)
-
-                Button:
-                    text: 'Sasquatch 0/50'
-                    size_hint_y: None
-                    height: 50
-                    on_release: app.show_levels(self)
-
-                Button:
-                    text: 'Microban 12/155'
-                    size_hint_y: None
-                    height: 50
-                    on_release: app.show_levels(self)
-
-                Button:
-                    text: 'NaboCosmos 2/40'
-                    size_hint_y: None
-                    height: 50
-                    on_release: app.show_levels(self)
-
-                Button:
-                    text: 'Yoshio Murase 0/54'
-                    size_hint_y: None
-                    height: 50
-                    on_release: app.show_levels(self)
-
-                Button:
-                    text: 'Sokogen-990602 2/78'
-                    size_hint_y: None
-                    height: 50
-                    on_release: app.show_levels(self)
-
-                Button:
-                    text: 'PicoCosmos 0/20'
-                    size_hint_y: None
-                    height: 50
-                    on_release: app.show_levels(self)
-
-                Button:
-                    text: 'Mas Sasquatch 0/50'
-                    size_hint_y: None
-                    height: 50
-                    on_release: app.show_levels(self)
 
         Button:
             text: 'Back'
@@ -176,7 +123,7 @@ ScreenManager:
                 spacing: 10
 
                 GridLayout:
-                    id: grid
+                    id: level_grid
                     cols: 4
                     size_hint_y: None
                     height: self.minimum_height

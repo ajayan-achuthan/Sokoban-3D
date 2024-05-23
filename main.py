@@ -1,36 +1,39 @@
+import kivy
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
-import kivy
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.uix.widget import Widget
 from kivy.properties import NumericProperty, ListProperty,StringProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.clock import mainthread
+from kivy.storage.jsonstore import JsonStore
 import queue
 from game import SokobanGame
-from utils import level_finder,count_levels
-from kivy.clock import mainthread
+import utils #available_collections
 
 class MainScreen(Screen):
     pass
 
 class NewGameScreen(Screen):
-    pass
+    def on_enter(self):
+        slcs = utils.available_collections()
+        app = App.get_running_app()
+        for i in slcs:
+            complete,total = utils.count_completed(i)
+            button = Button(text=f"{i} {complete}/{total}",size_hint_y= None, height= 50,on_release=lambda a,curr=i:app.show_levels(self,curr))
+            self.ids.collection_grid.add_widget(button)
 
 class LevelScreen(Screen):
-    @mainthread
     def on_enter(self):
         app = App.get_running_app()
-        for i in range(app.no_levels): 
-            button = Button(text=str(i+1),size_hint_y= None, height= 50,on_release=lambda a,curr=i:app.show_game(curr+1))
-            self.ids.grid.add_widget(button)
+        for i in range(app.no_levels):
+            bg_color = utils.is_completed(app.collection,i+1)
+            button = Button(text=str(i+1),size_hint_y= None, height= 50, background_color=bg_color,on_release=lambda a,curr=i:app.show_game(curr+1))
+            self.ids.level_grid.add_widget(button)
 
 class GameScreen(Screen):
-    def __init__(self,**kwargs):
-        super().__init__(**kwargs)
-        pass
-    
     def update_game(self, rows,cols,matrix):
         self.rows = rows
         self.cols = cols
@@ -64,11 +67,11 @@ class GameCompleted(Screen):
 class SokobanApp(App):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.collection = ''
-        self.no_levels = 0
-        self.rows = 0
-        self.cols = 0
-        self.matrix = ''
+        # self.collection = ''
+        # self.no_levels = 0
+        # self.rows = 0
+        # self.cols = 0
+        # self.matrix = ''
     def build(self):
         sm = ScreenManager()
         sm.add_widget(MainScreen(name='main'))
@@ -83,15 +86,17 @@ class SokobanApp(App):
 
     def show_levels(self, instance, collection):
         self.collection = collection
-        self.no_levels = count_levels(collection)
+        self.no_levels = utils.count_levels(collection)
         self.root.current = 'levels'
 
     def show_game(self,level):
-        self.width,self.height,self.matrix =level_finder(self.collection,level-1)
+        self.level = level
+        self.width,self.height,self.matrix =utils.level_finder(self.collection,level-1)
         self.root.current = 'game'
         self.root.get_screen('game').update_game(self.height,self.width,self.matrix)
 
     def show_completed(self):
+        utils.add_completed(self.collection,self.level)
         self.root.current = 'complete'
 
     def back_to_main(self, instance):

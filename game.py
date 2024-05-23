@@ -15,7 +15,6 @@ class SokobanGame(GridLayout):
         self.cols = cols
         self.rows = rows
         self.matrix = [[' 'for i in range(cols)]for j in range(rows)]
-        print(rows,cols,matrix)
         for i in range(len(matrix)):
             matrix[i] = list(matrix[i])
         for i in range(len(matrix)):
