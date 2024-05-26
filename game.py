@@ -8,6 +8,7 @@ from kivy.properties import NumericProperty, ListProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.image import Image
 from kivy.core.window import Window
+from kivy.graphics import Color, Rectangle
 import queue
 
 class SokobanGame(GridLayout):
@@ -186,19 +187,30 @@ class SokobanGame(GridLayout):
         self.clear_widgets()
         window_size = Window.width
         cell_size = (int(window_size/self.cols),int(window_size/self.cols))
+        print(cell_size)
         for row in range(self.rows):
             for col in range(self.cols):
                 if self.matrix[row][col] == '#':
-                    self.add_widget(Image(source =self.image_path+'wall.png',allow_stretch=True,size = cell_size))
+                    tile = Image(source =self.image_path+'wall.png',allow_stretch=True)
                 elif self.matrix[row][col] == '@':
-                    self.add_widget(Image(source =self.image_path+'worker.png',allow_stretch=True,size = cell_size))
+                    tile = Image(source =self.image_path+'worker.png',allow_stretch=True)
                 elif self.matrix[row][col] == '$':
-                    self.add_widget(Image(source =self.image_path+'box.png',allow_stretch=True,size = cell_size))
+                    tile = Image(source =self.image_path+'box.png',allow_stretch=True)
                 elif self.matrix[row][col] == '.':
-                    self.add_widget(Image(source =self.image_path+'dock.png',allow_stretch=True,size = cell_size))
+                    tile = Image(source =self.image_path+'dock.png',allow_stretch=True)
                 elif self.matrix[row][col] == '*':
-                    self.add_widget(Image(source =self.image_path+'box_docked.png',allow_stretch=True,size = cell_size))
+                    tile = Image(source =self.image_path+'box_docked.png',allow_stretch=True)
                 elif self.matrix[row][col] == '+':
-                    self.add_widget(Image(source =self.image_path+'worker_dock.png',allow_stretch=True,size = cell_size))
+                    tile = Image(source =self.image_path+'worker_dock.png',allow_stretch=True)
                 else:
-                    self.add_widget(Image(source =self.image_path+'floor.png',allow_stretch=True,size = cell_size))
+                    tile = Image(source =self.image_path+'floor.png',allow_stretch=True)
+                #with tile.canvas.before:
+                #    tile.rect = Rectangle(size=tile.size, pos=tile.pos)
+                
+                #tile.bind(size=self.update_rect, pos=self.update_rect)
+                #self.tiles[row][col] = tile
+                self.add_widget(tile)
+    
+    def update_rect(self, instance, value):
+        instance.rect.pos = instance.pos
+        instance.rect.size = instance.size

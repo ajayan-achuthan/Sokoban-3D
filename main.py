@@ -10,6 +10,7 @@ from kivy.properties import NumericProperty, ListProperty,StringProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.clock import mainthread
 from kivy.storage.jsonstore import JsonStore
+from kivy.uix.boxlayout import BoxLayout
 import queue
 from game import SokobanGame
 import utils #available_collections
@@ -44,9 +45,10 @@ class GameScreen(Screen):
         self.cols = cols
         self.matrix = matrix
         app = App.get_running_app()
-        root = GridLayout(cols=1)
+        box=BoxLayout(size_hint = (1,1))
+        root = GridLayout(cols=1,padding = [30,30,30,30])
         print(root.size,root.height,root.width,"dfsf")
-        game = SokobanGame(rows=rows,cols=cols,matrix=matrix,size_hint=(1, 1))
+        game = SokobanGame(rows=rows,cols=cols,matrix=matrix)
         root.add_widget(game)
         buttons = GridLayout(cols=7, size_hint_y=None, height=50)
         buttons.add_widget(Button(text='Up', on_press=lambda x: game.move(0,-1, True)))
@@ -57,7 +59,8 @@ class GameScreen(Screen):
         buttons.add_widget(Button(text='Reset', on_press=lambda x: game.reset()))
         buttons.add_widget(Button(text='Back', on_press=lambda x: app.back_to_show_levels()))
         root.add_widget(buttons)
-        self.add_widget(root)
+        box.add_widget(root)
+        self.add_widget(box)
 
 class GameCompleted(Screen):
     def __init__(self,**kwargs):
