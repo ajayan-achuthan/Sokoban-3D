@@ -1,3 +1,4 @@
+#:import utils kivy.utils
 ScreenManager:
     MainScreen:
     NewGameScreen:
@@ -10,47 +11,29 @@ ScreenManager:
         orientation: 'vertical'
         padding: 10
         spacing: 10
-
+        Button:
+            text: 'SOKOBAN'
+            size_hint_y:  0.3
+            on_release: app.new_game(self)
         Button:
             text: 'New game'
-            size_hint_y: None
-            height: 50
+            size_hint_y:  0.14
             on_release: app.new_game(self)
-
         Button:
             text: 'Continue game'
-            size_hint_y: None
-            height: 50
+            size_hint_y:  0.14
             on_release: app.continue_game(self)
-
         Button:
             text: 'Settings'
-            size_hint_y: None
-            height: 50
+            size_hint_y:  0.14
             on_release: app.settings(self)
-
         Button:
             text: 'High scores'
-            size_hint_y: None
-            height: 50
+            size_hint_y:  0.14
             on_release: app.high_scores(self)
-
-        Button:
-            text: 'Achievements'
-            size_hint_y: None
-            height: 50
-            on_release: app.achievements(self)
-
-        Button:
-            text: 'Landscape orientation'
-            size_hint_y: None
-            height: 50
-            on_release: app.landscape_orientation(self)
-
         Button:
             text: 'Exit'
-            size_hint_y: None
-            height: 50
+            size_hint_y:  0.14
             on_release: app.exit(self)
 
 <NewGameScreen>:
@@ -114,37 +97,70 @@ ScreenManager:
             on_release: app.back_to_new_game(self)
 <GameScreen>:
     name: 'game'
+    padding: 30
+    canvas:
+        Color:
+            rgba: utils.get_color_from_hex('#fbf8ef')
+        Rectangle:
+            pos: self.pos
+            size: self.size
     BoxLayout:
         orientation: 'vertical'
-        padding: 10
+        padding_y: 
+        spacing: 0
         BoxLayout:
-            size_hint_y: 0.15
-            canvas:
-                Color:
-                    rgb: 1, 0, 0
-                Rectangle:
-                    size: self.size
-                    pos:self.pos
             orientation: 'horizontal'
+            size_hint_y : 0.15
             Label:
-                text: root.collection_name
-                halign: 'left'
-                valign: 'middle'
-                size_hint: (1, None)
-                height: 30
-            Label:
-                text: root.collection_name
-                halign: 'left'
-                valign: 'middle'
-                size_hint: (1, None)
-                height: 30
+                text: " "
+                background_color: 0, 0, 0, 0
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y : 0.12
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_x : 0.5
+                Button:
+                    text:'Level '+ root.level_name 
+                    color : (119, 111, 101, 1)
+                    font_name : 'clearsans'
+                    font_size: 50
+                    markup: True
+                    halign :"left"
+                    valign : "middle"
+                Button:
+                    text:'Level '+ root.level_name 
+                    color : (119, 111, 101, 1)
+                    font_name : 'clearsans'
+                    font_size: 18
+                    markup: True
+                    halign :"left"
+                    valign : "middle"
+            Button:
+                text:
+                    '[size=18]' + 'PUSHES' + '[/size]' + \
+                    '\n[size=40]' + root.pushes + '[/size]'
+                size_hint_x : 0.25
+                color : (119, 111, 101, 1)
+                font_name : 'clearsans'
+                halign: 'center'
+                markup: True
+            Button:
+                text:
+                    '[size=18]' + 'PUSHES' + '[/size]' + \
+                    '\n[size=40]' + root.pushes + '[/size]'
+                size_hint_x : 0.25
+                color : (119, 111, 101, 1)
+                font_name : 'clearsans'
+                halign: 'center'
+                markup: True
         GridLayout:
             id :game_grid
             cols :1
-            size_hint_y: 0.5
+            size_hint_y :0.45
         GridLayout:
             cols :7
-            size_hint_y :0.25
+            size_hint_y :0.23
             Button:
                 text :'Up'
                 on_press: root.game.move(0,-1, True)
@@ -166,3 +182,6 @@ ScreenManager:
             Button:
                 text:'Back'
                 on_press:app.back_to_show_levels()
+            
+
+        

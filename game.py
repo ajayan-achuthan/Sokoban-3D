@@ -15,7 +15,7 @@ class SokobanGame(GridLayout):
     def __init__(self, rows,cols,matrix,grid_size,**kwargs):
         super(SokobanGame, self).__init__(**kwargs)
         self.clear_widgets()
-        self.image_path = f'images/'
+        self.image_path = f'assets/images/'
         self.queue = queue.LifoQueue()
         self.cols = cols
         self.rows = rows

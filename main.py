@@ -15,6 +15,10 @@ import queue
 from game import SokobanGame
 import utils #available_collections
 
+from kivy.core.text import LabelBase
+# Register the custom font
+LabelBase.register(name='clearsans', fn_regular='assets/fonts/ClearSans-Bold.ttf')
+
 class MainScreen(Screen):
     pass
 
@@ -42,10 +46,14 @@ class LevelScreen(Screen):
 class GameScreen(Screen):
     collection_name = StringProperty()
     level_name = StringProperty()
+    moves = StringProperty()
+    pushes = StringProperty()
     def update_game(self, rows,cols,matrix):
         app = App.get_running_app()
         self.collection_name = app.collection
         self.level_name = str(app.level)
+        self.moves = str(320)
+        self.pushes = str(34)
         self.game = SokobanGame(rows=rows,cols=cols,matrix=matrix,grid_size=self.ids.game_grid.size)
         self.ids.game_grid.add_widget(self.game)
 
