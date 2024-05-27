@@ -12,13 +12,16 @@ from kivy.graphics import Color, Rectangle
 import queue
 
 class SokobanGame(GridLayout):
-    def __init__(self, rows,cols,matrix,**kwargs):
+    def __init__(self, rows,cols,matrix,grid_size,**kwargs):
         super(SokobanGame, self).__init__(**kwargs)
+        self.clear_widgets()
         self.image_path = f'images/'
         self.queue = queue.LifoQueue()
         self.cols = cols
         self.rows = rows
         self.matrix = [[' 'for i in range(cols)]for j in range(rows)]
+        self.grid_size = grid_size
+        #print(self.cell_size,"game",self.width,self.height,self.size)
         for i in range(len(matrix)):
             matrix[i] = list(matrix[i])
         for i in range(len(matrix)):
@@ -185,9 +188,6 @@ class SokobanGame(GridLayout):
     
     def print_game(self):
         self.clear_widgets()
-        window_size = Window.width
-        cell_size = (int(window_size/self.cols),int(window_size/self.cols))
-        print(cell_size)
         for row in range(self.rows):
             for col in range(self.cols):
                 if self.matrix[row][col] == '#':
@@ -204,13 +204,8 @@ class SokobanGame(GridLayout):
                     tile = Image(source =self.image_path+'worker_dock.png',allow_stretch=True)
                 else:
                     tile = Image(source =self.image_path+'floor.png',allow_stretch=True)
-                #with tile.canvas.before:
-                #    tile.rect = Rectangle(size=tile.size, pos=tile.pos)
                 
                 #tile.bind(size=self.update_rect, pos=self.update_rect)
                 #self.tiles[row][col] = tile
                 self.add_widget(tile)
     
-    def update_rect(self, instance, value):
-        instance.rect.pos = instance.pos
-        instance.rect.size = instance.size

@@ -1,54 +1,36 @@
 from kivy.app import App
-from kivy.uix.screenmanager import ScreenManager, Screen, SlideTransition
-from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.gridlayout import GridLayout
 from kivy.uix.button import Button
 from kivy.uix.label import Label
 
-class HomeScreen(Screen):
+class GameInterface(GridLayout):
     def __init__(self, **kwargs):
-        super(HomeScreen, self).__init__(**kwargs)
-        layout = BoxLayout(orientation='vertical')
+        super(GameInterface, self).__init__(**kwargs)
+        self.cols = 2
 
-        # Create three buttons
-        btn1 = Button(text="Button 1")
-        btn1.bind(on_press=lambda instance: self.go_to_result('Button 1'))
-        layout.add_widget(btn1)
+        # Title label
+        self.add_widget(Label(text='2048', font_size='40sp'))
 
-        btn2 = Button(text="Button 2")
-        btn2.bind(on_press=lambda instance: self.go_to_result('Button 2'))
-        layout.add_widget(btn2)
+        # Score display
+        self.score_label = Label(text='SCORE: 0')
+        self.add_widget(self.score_label)
 
-        btn3 = Button(text="Button 3")
-        btn3.bind(on_press=lambda instance: self.go_to_result('Button 3'))
-        layout.add_widget(btn3)
+        # Best score display
+        self.best_label = Label(text='BEST: 0')
+        self.add_widget(self.best_label)
 
-        self.add_widget(layout)
+        # New game button
+        new_game_button = Button(text='New Game', size_hint=(None, None), width=200, height=50)
+        new_game_button.bind(on_press=self.new_game)
+        self.add_widget(new_game_button)
 
-    def go_to_result(self, button_text):
-        # Passing the button text as an argument to the result screen
-        
-        self.manager.current = 'result'
-        self.manager.get_screen('result').update_result(button_text)
+    def new_game(self, instance):
+        # Logic for starting a new game goes here
+        pass
 
-class ResultScreen(Screen):
-    def __init__(self, **kwargs):
-        super(ResultScreen, self).__init__(**kwargs)
-        self.layout = BoxLayout(orientation='vertical')
-        
-        self.label = Label(text="You have pressed button: ")
-        self.layout.add_widget(self.label)
-        
-        self.add_widget(self.layout)
-    
-    def update_result(self, button_text):
-        self.label.text = f"You have pressed button: {button_text}"
-
-class MyApp(App):
+class GameApp(App):
     def build(self):
-        sm = ScreenManager(transition=SlideTransition())
-        sm.add_widget(HomeScreen(name='home'))
-        sm.add_widget(ResultScreen(name='result'))
-        return sm
+        return GameInterface()
 
 if __name__ == '__main__':
-    MyApp().run()
+    GameApp().run()

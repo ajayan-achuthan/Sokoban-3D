@@ -40,27 +40,14 @@ class LevelScreen(Screen):
             self.ids.level_grid.add_widget(button)
 
 class GameScreen(Screen):
+    collection_name = StringProperty()
+    level_name = StringProperty()
     def update_game(self, rows,cols,matrix):
-        self.rows = rows
-        self.cols = cols
-        self.matrix = matrix
         app = App.get_running_app()
-        box=BoxLayout(size_hint = (1,1))
-        root = GridLayout(cols=1,padding = [30,30,30,30])
-        print(root.size,root.height,root.width,"dfsf")
-        game = SokobanGame(rows=rows,cols=cols,matrix=matrix)
-        root.add_widget(game)
-        buttons = GridLayout(cols=7, size_hint_y=None, height=50)
-        buttons.add_widget(Button(text='Up', on_press=lambda x: game.move(0,-1, True)))
-        buttons.add_widget(Button(text='Left', on_press=lambda x: game.move(-1,0, True)))
-        buttons.add_widget(Button(text='Right', on_press=lambda x: game.move(1,0, True)))
-        buttons.add_widget(Button(text='Down', on_press=lambda x: game.move(0,1, True)))
-        buttons.add_widget(Button(text='Undo', on_press=lambda x: game.unmove()))
-        buttons.add_widget(Button(text='Reset', on_press=lambda x: game.reset()))
-        buttons.add_widget(Button(text='Back', on_press=lambda x: app.back_to_show_levels()))
-        root.add_widget(buttons)
-        box.add_widget(root)
-        self.add_widget(box)
+        self.collection_name = app.collection
+        self.level_name = str(app.level)
+        self.game = SokobanGame(rows=rows,cols=cols,matrix=matrix,grid_size=self.ids.game_grid.size)
+        self.ids.game_grid.add_widget(self.game)
 
 class GameCompleted(Screen):
     def __init__(self,**kwargs):
@@ -77,7 +64,8 @@ class GameCompleted(Screen):
 class SokobanApp(App):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        pass
+        self.width = 100
+        self.height = 100
     def build(self):
         sm = ScreenManager()
         sm.add_widget(MainScreen(name='main'))

@@ -114,3 +114,55 @@ ScreenManager:
             on_release: app.back_to_new_game(self)
 <GameScreen>:
     name: 'game'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        BoxLayout:
+            size_hint_y: 0.15
+            canvas:
+                Color:
+                    rgb: 1, 0, 0
+                Rectangle:
+                    size: self.size
+                    pos:self.pos
+            orientation: 'horizontal'
+            Label:
+                text: root.collection_name
+                halign: 'left'
+                valign: 'middle'
+                size_hint: (1, None)
+                height: 30
+            Label:
+                text: root.collection_name
+                halign: 'left'
+                valign: 'middle'
+                size_hint: (1, None)
+                height: 30
+        GridLayout:
+            id :game_grid
+            cols :1
+            size_hint_y: 0.5
+        GridLayout:
+            cols :7
+            size_hint_y :0.25
+            Button:
+                text :'Up'
+                on_press: root.game.move(0,-1, True)
+            Button:
+                text:'Left'
+                on_press: root.game.move(-1,0, True)
+            Button
+                text:'Right'
+                on_press: root.game.move(1,0, True)
+            Button:
+                text:'Down'
+                on_press: root.game.move(0,1, True)
+            Button
+                text:'Undo'
+                on_press:x: root.game.unmove()
+            Button:
+                text:'Reset'
+                on_press: root.game.reset()
+            Button:
+                text:'Back'
+                on_press:app.back_to_show_levels()
