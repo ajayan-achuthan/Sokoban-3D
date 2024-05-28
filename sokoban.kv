@@ -4,7 +4,7 @@ ScreenManager:
     NewGameScreen:
     LevelScreen:
     GameScreen:
-
+      
 <MainScreen>:
     name: 'main'
     BoxLayout:
@@ -97,7 +97,6 @@ ScreenManager:
             on_release: app.back_to_new_game(self)
 <GameScreen>:
     name: 'game'
-    padding: 30
     canvas:
         Color:
             rgba: utils.get_color_from_hex('#fbf8ef')
@@ -106,7 +105,7 @@ ScreenManager:
             size: self.size
     BoxLayout:
         orientation: 'vertical'
-        padding_y: 
+        padding: 20
         spacing: 0
         BoxLayout:
             orientation: 'horizontal'
@@ -116,44 +115,86 @@ ScreenManager:
                 background_color: 0, 0, 0, 0
         BoxLayout:
             orientation: 'horizontal'
+            spacing:10
             size_hint_y : 0.12
             BoxLayout:
                 orientation: 'vertical'
                 size_hint_x : 0.5
-                Button:
+                Label:
                     text:'Level '+ root.level_name 
-                    color : (119, 111, 101, 1)
+                    color : 0.435, 0.4, 0.361, 1
                     font_name : 'clearsans'
                     font_size: 50
                     markup: True
-                    halign :"left"
+                    halign :'left'
                     valign : "middle"
-                Button:
-                    text:'Level '+ root.level_name 
-                    color : (119, 111, 101, 1)
+                Label:
+                    text:root.collection_name 
+                    color : 0.435, 0.4, 0.361, 1
                     font_name : 'clearsans'
                     font_size: 18
                     markup: True
-                    halign :"left"
+                    halign :'left'
                     valign : "middle"
-            Button:
-                text:
-                    '[size=18]' + 'PUSHES' + '[/size]' + \
-                    '\n[size=40]' + root.pushes + '[/size]'
+            BoxLayout:
+                orientation: 'vertical'
                 size_hint_x : 0.25
-                color : (119, 111, 101, 1)
-                font_name : 'clearsans'
-                halign: 'center'
-                markup: True
-            Button:
-                text:
-                    '[size=18]' + 'PUSHES' + '[/size]' + \
-                    '\n[size=40]' + root.pushes + '[/size]'
+                Label:
+                    text:'MOVES' 
+                    size_hint_y: 0.3
+                    font_name : 'clearsans'
+                    color : 0.98, 0.984, 0.98,1
+                    font_size: 12
+                    font_name : 'clearsans'
+                    canvas.before:
+                        Color:
+                            rgba: 0.733, 0.678, 0.624,1
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius:[(7, 7), (7, 7), (0, 0), (0, 0)]
+                Label:
+                    id: moves_label
+                    text:"{}".format(root.moves)
+                    color : 0.98, 0.984, 0.98,1
+                    font_size: 40
+                    font_name : 'clearsans'
+                    canvas.before:
+                        Color:
+                            rgba: 0.733, 0.678, 0.624,1
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius:[(0, 0), (0, 0),(7, 7), (7, 7)]
+            BoxLayout:
+                orientation: 'vertical'
                 size_hint_x : 0.25
-                color : (119, 111, 101, 1)
-                font_name : 'clearsans'
-                halign: 'center'
-                markup: True
+                Label:
+                    text:'PUSHES' 
+                    size_hint_y: 0.3
+                    color : 0.98, 0.984, 0.98,1
+                    font_size: 12
+                    font_name : 'clearsans'
+                    canvas.before:
+                        Color:
+                            rgba: 0.733, 0.678, 0.624,1
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius:[(7, 7), (7, 7), (0, 0), (0, 0)]
+                Label:
+                    id: pushes_label
+                    text:"{}".format(root.pushes)
+                    color : 0.98, 0.984, 0.98,1
+                    font_size: 40
+                    font_name : 'clearsans'
+                    canvas.before:
+                        Color:
+                            rgba: 0.733, 0.678, 0.624,1
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius:[(0, 0), (0, 0),(7, 7), (7, 7)]
         GridLayout:
             id :game_grid
             cols :1

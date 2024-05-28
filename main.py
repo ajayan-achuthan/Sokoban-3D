@@ -46,16 +46,21 @@ class LevelScreen(Screen):
 class GameScreen(Screen):
     collection_name = StringProperty()
     level_name = StringProperty()
-    moves = StringProperty()
-    pushes = StringProperty()
+    moves = NumericProperty(0)
+    pushes = NumericProperty(0)
+    def __init__(self,**kwargs):
+        super().__init__(**kwargs)
+        pass
     def update_game(self, rows,cols,matrix):
         app = App.get_running_app()
         self.collection_name = app.collection
         self.level_name = str(app.level)
-        self.moves = str(320)
-        self.pushes = str(34)
-        self.game = SokobanGame(rows=rows,cols=cols,matrix=matrix,grid_size=self.ids.game_grid.size)
+        self.ids.game_grid.clear_widgets()
+        self.game = SokobanGame(rows=rows,cols=cols,matrix=matrix)
         self.ids.game_grid.add_widget(self.game)
+    def update_moves(self,moves,pushes):
+        self.moves = moves
+        self.pushes =pushes
 
 class GameCompleted(Screen):
     def __init__(self,**kwargs):
@@ -72,8 +77,6 @@ class GameCompleted(Screen):
 class SokobanApp(App):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.width = 100
-        self.height = 100
     def build(self):
         sm = ScreenManager()
         sm.add_widget(MainScreen(name='main'))

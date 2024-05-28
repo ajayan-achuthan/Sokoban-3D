@@ -11,17 +11,17 @@ from kivy.core.window import Window
 from kivy.graphics import Color, Rectangle
 import queue
 
+app = App.get_running_app()
 class SokobanGame(GridLayout):
-    def __init__(self, rows,cols,matrix,grid_size,**kwargs):
+    def __init__(self, rows,cols,matrix,**kwargs):
         super(SokobanGame, self).__init__(**kwargs)
-        self.clear_widgets()
-        self.image_path = f'assets/images/'
+        self.image_path = f'assets/images/game/'
         self.queue = queue.LifoQueue()
         self.cols = cols
         self.rows = rows
         self.matrix = [[' 'for i in range(cols)]for j in range(rows)]
-        self.grid_size = grid_size
-        #print(self.cell_size,"game",self.width,self.height,self.size)
+        self.moves = 0
+        self.pushes = 0
         for i in range(len(matrix)):
             matrix[i] = list(matrix[i])
         for i in range(len(matrix)):
@@ -103,8 +103,12 @@ class SokobanGame(GridLayout):
                 current = self.worker()
                 self.move(movement[0] * -1,movement[1] * -1, False)
                 self.move_box(current[0]+movement[0],current[1]+movement[1],movement[0] * -1,movement[1] * -1)
+                self.moves -= 2
+                self.pushes -=1
             else:
                 self.move(movement[0] * -1,movement[1] * -1, False)
+                self.moves -= 2
+            self.print_game()
     def reset(self):
         while not self.queue.empty():
             movement = self.queue.get()
@@ -112,11 +116,16 @@ class SokobanGame(GridLayout):
                 current = self.worker()
                 self.move(movement[0] * -1,movement[1] * -1, False)
                 self.move_box(current[0]+movement[0],current[1]+movement[1],movement[0] * -1,movement[1] * -1)
+                self.moves -= 2
+                self.pushes -=1
             else:
                 self.move(movement[0] * -1,movement[1] * -1, False)
+                self.moves -= 2
+        self.print_game()
 
     def move(self,x,y,save):
         if self.can_move(x,y):
+            self.moves += 1
             current = self.worker()
             future = self.next(x,y)
             if current[2] == '@' and future == ' ':
@@ -136,6 +145,8 @@ class SokobanGame(GridLayout):
                 self.set_content(current[0],current[1],'.')
                 if save: self.queue.put((x,y,False))
         elif self.can_push(x,y):
+            self.moves += 1
+            self.pushes +=1
             current = self.worker()
             future = self.next(x,y)
             future_box = self.next(x+x,y+y)
@@ -188,6 +199,8 @@ class SokobanGame(GridLayout):
     
     def print_game(self):
         self.clear_widgets()
+        app = App.get_running_app()
+        app.root.get_screen('game').update_moves(self.moves,self.pushes)
         for row in range(self.rows):
             for col in range(self.cols):
                 if self.matrix[row][col] == '#':
