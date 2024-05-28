@@ -1,0 +1,61 @@
+
+tutorial1.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+tut-finger
+  rotate: false
+  xy: 5, 5
+  size: 90, 327
+  orig: 90, 327
+  offset: 0, 0
+  index: -1
+box-token-window
+  rotate: false
+  xy: 100, 5
+  size: 390, 250
+  orig: 390, 250
+  offset: 0, 0
+  index: -1
+tut-window-box-move
+  rotate: false
+  xy: 100, 260
+  size: 372, 246
+  orig: 372, 246
+  offset: 0, 0
+  index: -1
+tut-window-zoom
+  rotate: false
+  xy: 495, 5
+  size: 372, 246
+  orig: 372, 246
+  offset: 0, 0
+  index: -1
+tut-window-tap
+  rotate: false
+  xy: 495, 256
+  size: 372, 246
+  orig: 372, 246
+  offset: 0, 0
+  index: -1
+tut-dot
+  rotate: false
+  xy: 872, 5
+  size: 101, 101
+  orig: 101, 101
+  offset: 0, 0
+  index: -1
+tut-ok
+  rotate: false
+  xy: 872, 111
+  size: 110, 88
+  orig: 110, 88
+  offset: 0, 0
+  index: -1
+tut-arrow
+  rotate: false
+  xy: 5, 337
+  size: 63, 59
+  orig: 63, 59
+  offset: 0, 0
+  index: -1

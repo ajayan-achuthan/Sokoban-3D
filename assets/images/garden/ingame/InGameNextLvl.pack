@@ -1,0 +1,89 @@
+
+next-lvl1.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+next-window
+  rotate: false
+  xy: 5, 5
+  size: 696, 699
+  orig: 696, 699
+  offset: 0, 0
+  index: -1
+leaf
+  rotate: false
+  xy: 706, 5
+  size: 292, 318
+  orig: 292, 318
+  offset: 0, 0
+  index: -1
+next-flower
+  rotate: false
+  xy: 5, 709
+  size: 232, 270
+  orig: 232, 270
+  offset: 0, 0
+  index: -1
+next-level
+  rotate: false
+  xy: 242, 709
+  size: 102, 98
+  orig: 102, 98
+  offset: 0, 0
+  index: -1
+next-great
+  rotate: false
+  xy: 349, 709
+  size: 349, 91
+  orig: 349, 91
+  offset: 0, 0
+  index: -1
+next-home
+  rotate: false
+  xy: 242, 812
+  size: 94, 84
+  orig: 94, 84
+  offset: 0, 0
+  index: -1
+flower-star
+  rotate: false
+  xy: 242, 901
+  size: 56, 56
+  orig: 56, 56
+  offset: 0, 0
+  index: -1
+flower-empty
+  rotate: false
+  xy: 242, 962
+  size: 51, 52
+  orig: 51, 52
+  offset: 0, 0
+  index: -1
+next-reverts
+  rotate: false
+  xy: 5, 984
+  size: 224, 31
+  orig: 224, 31
+  offset: 0, 0
+  index: -1
+next-pushes
+  rotate: false
+  xy: 349, 805
+  size: 207, 31
+  orig: 207, 31
+  offset: 0, 0
+  index: -1
+solved
+  rotate: false
+  xy: 349, 841
+  size: 181, 31
+  orig: 181, 31
+  offset: 0, 0
+  index: -1
+next-steps
+  rotate: false
+  xy: 349, 877
+  size: 159, 31
+  orig: 159, 31
+  offset: 0, 0
+  index: -1

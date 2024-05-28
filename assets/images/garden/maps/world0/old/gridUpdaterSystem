@@ -1,0 +1,144 @@
+package com.jgrzesik.Kiwano3dFramework.Entity.Systems;
+
+import java.util.Set;
+import java.util.UUID;
+
+import com.jgrzesik.Kiwano3dFramework.Entity.Components.GridComponent;
+import com.jgrzesik.Kiwano3dFramework.Entity.Components.GridUpdaterComponent;
+import com.jgrzesik.Kiwano3dFramework.Entity.Components.PositionComponent;
+import com.jgrzesik.Kiwano3dFramework.Entity.System.EntityManager;
+import com.jgrzesik.Kiwano3dFramework.Entity.System.SubSystem;
+import com.jgrzesik.Kiwano3dFramework.KiwanoUtils.KiwanoLog;
+import com.jgrzesik.Kiwano3dFramework.Tile3D.GameWorld;
+import com.jgrzesik.Kiwano3dFramework.Tile3D.GridUnitConverter;
+import com.jgrzesik.Kiwano3dFramework.Tile3D.KiwanoTile;
+import com.jgrzesik.Kiwano3dFramework.Tile3D.KiwanoTileMap;
+
+public class GridUpdaterSystem implements SubSystem {
+
+
+	// ===========================================================
+	// Constants
+	// ===========================================================
+
+	// ===========================================================
+	// Fields
+	// ===========================================================
+	private EntityManager entityManager; 
+	private GameWorld world;
+	GridUnitConverter unitConv;
+	private int mLastBestMatchX;
+	private int mLastBestMatchY;
+	private int mLastBestMatchZ;
+	
+	// ===========================================================
+	// Constructors
+	// ===========================================================
+	
+	public GridUpdaterSystem(EntityManager inEntityManager, GameWorld inWorld, GridUnitConverter inUnitConv){
+		entityManager = inEntityManager;
+		world = inWorld;
+		unitConv = inUnitConv;
+	}
+
+	// ===========================================================
+	// Getter & Setter
+	// ===========================================================
+
+	// ===========================================================
+	// Methods for/from SuperClass/Interfaces
+	// ===========================================================
+	
+
+	@Override
+	public void processOneGameTick(float inLastDeltaTime) {
+		
+		//
+		Set<UUID> lEntities = entityManager.getAllEntitiesPossessingComponent(GridUpdaterComponent.class);
+		
+		//
+		for(UUID lEntity: lEntities){
+			processSingleEntity(lEntity, inLastDeltaTime); 
+		}	
+
+	}
+
+	private void processSingleEntity(UUID inEntity, float inLastDeltaTime){
+		
+		//		
+		KiwanoTileMap lMap = world.getMap();
+		GridComponent lParentGrid = entityManager.getComponent(inEntity, GridComponent.class);
+		PositionComponent lPos 				 = entityManager.getComponent(inEntity, PositionComponent.class);		
+		calculateBestMatchingTileCoord(inEntity, lPos);
+		mLastBestMatchY =  lParentGrid.getGridY(); 
+		
+		if(mLastBestMatchY<0){
+			KiwanoLog.log(this, "mLastBestMatchY: " + mLastBestMatchY + " ,logical y: " + lPos.getY() +" ,name: " + entityManager.nameFor(inEntity));
+		}
+		
+		//
+		GridUpdaterComponent lGridUpdateComp = entityManager.getComponent(inEntity, GridUpdaterComponent.class);		
+		KiwanoTile lCurrentTile					 = lMap.getTileAt(mLastBestMatchX, mLastBestMatchY, mLastBestMatchZ);
+		KiwanoTile lLastTile 					 = lGridUpdateComp.currentTile;
+		
+		//
+		if(lLastTile == null){
+			lGridUpdateComp.currentTile = lCurrentTile;
+			lCurrentTile.registerEntity(inEntity);	
+			return;
+		}
+		
+		//
+		if(lCurrentTile != lLastTile){
+			
+			//
+			lLastTile.unregisterEntity(inEntity);
+			lCurrentTile.registerEntity(inEntity);
+			
+			//
+			GridComponent lCurrentTileGrid= entityManager.getComponent(lCurrentTile.getEntity(), GridComponent.class);			
+			lParentGrid.updateGridWithVal(lCurrentTileGrid);
+			
+			//
+			lGridUpdateComp.prevVisitedTile = lGridUpdateComp.currentTile;
+			lGridUpdateComp.currentTile = lCurrentTile;			
+		}
+		
+	}
+	
+	
+	// ===========================================================
+	// Methods
+	// ===========================================================
+	
+	private void calculateBestMatchingTileCoord(UUID inEntity, PositionComponent inPos){
+		
+		//
+		KiwanoTileMap lMap = world.getMap();
+		
+		//
+		float lPosX = inPos.getX();
+		float lPosY = inPos.getY();
+		float lPosZ = inPos.getZ();
+
+		//
+		mLastBestMatchX = unitConv.calcGridX(lPosX); //isMovingE?GridUtils.calcGridX(lPosX-TOLERANCE):(isMovingW?GridUtils.calcGridX(lPosX+TOLERANCE):GridUtils.calcGridX(lPosX));
+		mLastBestMatchY = unitConv.calcGridY(lPosY);
+		mLastBestMatchZ = unitConv.calcGridZ(lPosZ); //isMovingN?GridUtils.calcGridX(lPosZ+TOLERANCE):(isMovingS?GridUtils.calcGridX(lPosZ-TOLERANCE):GridUtils.calcGridX(lPosZ));
+		
+		//
+		int lWorldSizeY = lMap.getSizeY();
+		if (mLastBestMatchY>=lWorldSizeY){
+			mLastBestMatchY = lWorldSizeY - 1;
+		}
+		
+	}
+	
+
+	// ===========================================================
+	// Inner and Anonymous Classes
+	// ===========================================================
+
+}
+
+

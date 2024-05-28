@@ -1,0 +1,536 @@
+
+buttons1.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+buy
+  rotate: false
+  xy: 5, 5
+  size: 288, 130
+  orig: 288, 130
+  offset: 0, 0
+  index: -1
+login
+  rotate: false
+  xy: 298, 5
+  size: 141, 127
+  orig: 141, 127
+  offset: 0, 0
+  index: -1
+achievements
+  rotate: false
+  xy: 5, 140
+  size: 257, 119
+  orig: 257, 119
+  offset: 0, 0
+  index: -1
+leaderboards
+  rotate: false
+  xy: 5, 264
+  size: 260, 118
+  orig: 260, 118
+  offset: 0, 0
+  index: -1
+logout
+  rotate: false
+  xy: 5, 387
+  size: 260, 118
+  orig: 260, 118
+  offset: 0, 0
+  index: -1
+play
+  rotate: false
+  xy: 5, 510
+  size: 270, 116
+  orig: 270, 116
+  offset: 0, 0
+  index: -1
+controls
+  rotate: false
+  xy: 5, 631
+  size: 270, 116
+  orig: 270, 116
+  offset: 0, 0
+  index: -1
+sound-on
+  rotate: false
+  xy: 267, 140
+  size: 122, 113
+  orig: 122, 113
+  offset: 0, 0
+  index: -1
+options
+  rotate: false
+  xy: 270, 264
+  size: 122, 113
+  orig: 122, 113
+  offset: 0, 0
+  index: -1
+social
+  rotate: false
+  xy: 270, 387
+  size: 122, 113
+  orig: 122, 113
+  offset: 0, 0
+  index: -1
+music-off
+  rotate: false
+  xy: 280, 510
+  size: 122, 113
+  orig: 122, 113
+  offset: 0, 0
+  index: -1
+sound-off
+  rotate: false
+  xy: 280, 631
+  size: 122, 113
+  orig: 122, 113
+  offset: 0, 0
+  index: -1
+info
+  rotate: false
+  xy: 5, 752
+  size: 123, 112
+  orig: 123, 112
+  offset: 0, 0
+  index: -1
+default
+  rotate: false
+  xy: 133, 752
+  size: 237, 111
+  orig: 237, 111
+  offset: 0, 0
+  index: -1
+
+common1.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+leaf-plantago
+  rotate: false
+  xy: 5, 5
+  size: 425, 578
+  orig: 425, 578
+  offset: 0, 0
+  index: -1
+fern
+  rotate: false
+  xy: 5, 588
+  size: 417, 325
+  orig: 417, 325
+  offset: 0, 0
+  index: -1
+leaf
+  rotate: false
+  xy: 435, 5
+  size: 307, 414
+  orig: 307, 414
+  offset: 0, 0
+  index: -1
+leaf-1
+  rotate: false
+  xy: 747, 5
+  size: 271, 337
+  orig: 271, 337
+  offset: 0, 0
+  index: -1
+bug4
+  rotate: false
+  xy: 435, 424
+  size: 114, 176
+  orig: 114, 176
+  offset: 0, 0
+  index: -1
+bug3
+  rotate: false
+  xy: 554, 424
+  size: 117, 171
+  orig: 117, 171
+  offset: 0, 0
+  index: -1
+bug2
+  rotate: false
+  xy: 676, 424
+  size: 116, 170
+  orig: 116, 170
+  offset: 0, 0
+  index: -1
+bug1
+  rotate: false
+  xy: 435, 605
+  size: 102, 156
+  orig: 102, 156
+  offset: 0, 0
+  index: -1
+
+common2.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bg
+  rotate: false
+  xy: 5, 5
+  size: 600, 400
+  orig: 600, 400
+  offset: 0, 0
+  index: -1
+
+world-choose1.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+world-ad
+  rotate: false
+  xy: 5, 5
+  size: 535, 322
+  orig: 535, 322
+  offset: 0, 0
+  index: -1
+world4box
+  rotate: false
+  xy: 545, 5
+  size: 469, 228
+  orig: 469, 228
+  offset: 0, 0
+  index: -1
+world2box
+  rotate: false
+  xy: 5, 332
+  size: 469, 228
+  orig: 469, 228
+  offset: 0, 0
+  index: -1
+world6box
+  rotate: false
+  xy: 5, 565
+  size: 469, 228
+  orig: 469, 228
+  offset: 0, 0
+  index: -1
+world5box
+  rotate: false
+  xy: 479, 332
+  size: 469, 228
+  orig: 469, 228
+  offset: 0, 0
+  index: -1
+world3box
+  rotate: false
+  xy: 479, 565
+  size: 469, 228
+  orig: 469, 228
+  offset: 0, 0
+  index: -1
+
+world-choose2.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+lock-bg
+  rotate: false
+  xy: 5, 5
+  size: 267, 276
+  orig: 267, 276
+  offset: 0, 0
+  index: -1
+
+about1.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+tween-engine
+  rotate: false
+  xy: 5, 5
+  size: 189, 63
+  orig: 189, 63
+  offset: 0, 0
+  index: -1
+audacity
+  rotate: false
+  xy: 199, 5
+  size: 61, 54
+  orig: 61, 54
+  offset: 0, 0
+  index: -1
+blender
+  rotate: false
+  xy: 199, 64
+  size: 60, 54
+  orig: 60, 54
+  offset: 0, 0
+  index: -1
+ubuntu
+  rotate: false
+  xy: 265, 5
+  size: 51, 54
+  orig: 51, 54
+  offset: 0, 0
+  index: -1
+gimp
+  rotate: false
+  xy: 321, 5
+  size: 70, 53
+  orig: 70, 53
+  offset: 0, 0
+  index: -1
+eclipse
+  rotate: false
+  xy: 321, 63
+  size: 54, 53
+  orig: 54, 53
+  offset: 0, 0
+  index: -1
+inkscape
+  rotate: false
+  xy: 265, 64
+  size: 47, 53
+  orig: 47, 53
+  offset: 0, 0
+  index: -1
+yasc
+  rotate: false
+  xy: 396, 5
+  size: 61, 51
+  orig: 61, 51
+  offset: 0, 0
+  index: -1
+libgdx
+  rotate: false
+  xy: 5, 73
+  size: 188, 44
+  orig: 188, 44
+  offset: 0, 0
+  index: -1
+
+social1.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+google-plus
+  rotate: false
+  xy: 5, 5
+  size: 197, 173
+  orig: 197, 173
+  offset: 0, 0
+  index: -1
+facebook
+  rotate: false
+  xy: 5, 183
+  size: 197, 170
+  orig: 197, 170
+  offset: 0, 0
+  index: -1
+soc-kivano
+  rotate: false
+  xy: 5, 358
+  size: 197, 169
+  orig: 197, 169
+  offset: 0, 0
+  index: -1
+twitter
+  rotate: false
+  xy: 5, 532
+  size: 197, 168
+  orig: 197, 168
+  offset: 0, 0
+  index: -1
+
+logo1.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+garden
+  rotate: false
+  xy: 5, 5
+  size: 679, 148
+  orig: 679, 148
+  offset: 0, 0
+  index: -1
+sokoban
+  rotate: false
+  xy: 5, 158
+  size: 503, 70
+  orig: 503, 70
+  offset: 0, 0
+  index: -1
+
+giftizbutton1.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+giftizwarning
+  rotate: false
+  xy: 5, 5
+  size: 102, 150
+  orig: 102, 150
+  offset: 0, 0
+  index: -1
+giftiznaked
+  rotate: false
+  xy: 5, 160
+  size: 102, 150
+  orig: 102, 150
+  offset: 0, 0
+  index: -1
+giftizbadge
+  rotate: false
+  xy: 5, 315
+  size: 102, 150
+  orig: 102, 150
+  offset: 0, 0
+  index: -1
+
+control-choose1.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+leaf-controls
+  rotate: false
+  xy: 5, 5
+  size: 416, 314
+  orig: 416, 314
+  offset: 0, 0
+  index: -1
+bottom-left
+  rotate: false
+  xy: 426, 5
+  size: 372, 239
+  orig: 372, 239
+  offset: 0, 0
+  index: -1
+bottom-right
+  rotate: false
+  xy: 5, 324
+  size: 372, 239
+  orig: 372, 239
+  offset: 0, 0
+  index: -1
+corners
+  rotate: false
+  xy: 5, 568
+  size: 372, 239
+  orig: 372, 239
+  offset: 0, 0
+  index: -1
+gesture
+  rotate: false
+  xy: 382, 324
+  size: 372, 239
+  orig: 372, 239
+  offset: 0, 0
+  index: -1
+checked
+  rotate: false
+  xy: 803, 5
+  size: 100, 101
+  orig: 100, 101
+  offset: 0, 0
+  index: -1
+
+lvlbuttons1.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+world
+  rotate: false
+  xy: 5, 5
+  size: 414, 313
+  orig: 414, 313
+  offset: 0, 0
+  index: -1
+button-learn
+  rotate: false
+  xy: 5, 323
+  size: 154, 129
+  orig: 154, 129
+  offset: 0, 0
+  index: -1
+button4
+  rotate: false
+  xy: 164, 323
+  size: 142, 125
+  orig: 142, 125
+  offset: 0, 0
+  index: -1
+button2
+  rotate: false
+  xy: 311, 323
+  size: 142, 125
+  orig: 142, 125
+  offset: 0, 0
+  index: -1
+button1
+  rotate: false
+  xy: 5, 457
+  size: 142, 125
+  orig: 142, 125
+  offset: 0, 0
+  index: -1
+button3
+  rotate: false
+  xy: 152, 457
+  size: 142, 125
+  orig: 142, 125
+  offset: 0, 0
+  index: -1
+arrowLeft
+  rotate: false
+  xy: 299, 457
+  size: 102, 98
+  orig: 102, 98
+  offset: 0, 0
+  index: -1
+arrowRight
+  rotate: false
+  xy: 5, 587
+  size: 102, 98
+  orig: 102, 98
+  offset: 0, 0
+  index: -1
+home
+  rotate: false
+  xy: 406, 457
+  size: 96, 86
+  orig: 96, 86
+  offset: 0, 0
+  index: -1
+three-star
+  rotate: false
+  xy: 112, 587
+  size: 135, 50
+  orig: 135, 50
+  offset: 0, 0
+  index: -1
+one-star
+  rotate: false
+  xy: 252, 587
+  size: 135, 50
+  orig: 135, 50
+  offset: 0, 0
+  index: -1
+two-star
+  rotate: false
+  xy: 112, 642
+  size: 135, 50
+  orig: 135, 50
+  offset: 0, 0
+  index: -1
+
+loading1.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+loading-logo
+  rotate: false
+  xy: 5, 5
+  size: 519, 65
+  orig: 519, 65
+  offset: 0, 0
+  index: -1
+loading-bg
+  rotate: false
+  xy: 5, 75
+  size: 4, 4
+  orig: 4, 4
+  offset: 0, 0
+  index: -1

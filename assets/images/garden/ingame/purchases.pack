@@ -1,0 +1,54 @@
+
+purchases1.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+solutions4
+  rotate: false
+  xy: 2, 2
+  size: 216, 207
+  orig: 216, 207
+  offset: 0, 0
+  index: -1
+solutions3
+  rotate: false
+  xy: 220, 2
+  size: 216, 207
+  orig: 216, 207
+  offset: 0, 0
+  index: -1
+solutions2
+  rotate: false
+  xy: 2, 211
+  size: 216, 207
+  orig: 216, 207
+  offset: 0, 0
+  index: -1
+donation
+  rotate: false
+  xy: 220, 211
+  size: 216, 207
+  orig: 216, 207
+  offset: 0, 0
+  index: -1
+no-ads
+  rotate: false
+  xy: 2, 420
+  size: 216, 207
+  orig: 216, 207
+  offset: 0, 0
+  index: -1
+solutions1
+  rotate: false
+  xy: 220, 420
+  size: 216, 207
+  orig: 216, 207
+  offset: 0, 0
+  index: -1
+unlock-all-lvls
+  rotate: false
+  xy: 2, 629
+  size: 216, 207
+  orig: 216, 207
+  offset: 0, 0
+  index: -1

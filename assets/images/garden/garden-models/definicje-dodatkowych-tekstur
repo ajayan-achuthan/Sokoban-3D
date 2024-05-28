@@ -1,0 +1,8 @@
+*Hero
+- Bazowa tekstura jest domyślna.
+- TEKSTURA IDX 0: jest 'zmęczoną' teksturą (widoczną przy pewnym poziomie zmęczenia)
+- TEKSTURA IDX 1: jest 'mrugającą' teksturą (widoczna przez chwilę raz na kilka sekund)
+
+*Shadow
+- Bazowa tekstura to okrągły cień (pod bohatera)
+- TEKSTURA IDX 0: kwadratowa tekstura pod boxa.

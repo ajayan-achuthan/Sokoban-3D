@@ -1,0 +1,173 @@
+
+ui1.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+pause-background
+  rotate: false
+  xy: 5, 5
+  size: 186, 512
+  orig: 186, 512
+  offset: 0, 0
+  index: -1
+get-solution
+  rotate: false
+  xy: 196, 5
+  size: 97, 152
+  orig: 97, 152
+  offset: 0, 0
+  index: -1
+play-alpha
+  rotate: false
+  xy: 298, 5
+  size: 131, 131
+  orig: 131, 131
+  offset: 0, 0
+  index: -1
+arrow-w
+  rotate: false
+  xy: 196, 162
+  size: 128, 129
+  orig: 128, 129
+  offset: 0, 0
+  index: -1
+arrow-e
+  rotate: false
+  xy: 329, 162
+  size: 128, 129
+  orig: 128, 129
+  offset: 0, 0
+  index: -1
+arrow-s
+  rotate: false
+  xy: 196, 296
+  size: 128, 129
+  orig: 128, 129
+  offset: 0, 0
+  index: -1
+arrow-n
+  rotate: false
+  xy: 329, 296
+  size: 128, 129
+  orig: 128, 129
+  offset: 0, 0
+  index: -1
+play-solution
+  rotate: false
+  xy: 5, 522
+  size: 125, 119
+  orig: 125, 119
+  offset: 0, 0
+  index: -1
+reset-solution
+  rotate: false
+  xy: 135, 522
+  size: 125, 119
+  orig: 125, 119
+  offset: 0, 0
+  index: -1
+stop-solution
+  rotate: false
+  xy: 265, 522
+  size: 125, 119
+  orig: 125, 119
+  offset: 0, 0
+  index: -1
+pause-solution
+  rotate: false
+  xy: 5, 646
+  size: 125, 119
+  orig: 125, 119
+  offset: 0, 0
+  index: -1
+back2game
+  rotate: false
+  xy: 395, 522
+  size: 93, 97
+  orig: 93, 97
+  offset: 0, 0
+  index: -1
+undo
+  rotate: false
+  xy: 5, 770
+  size: 91, 97
+  orig: 91, 97
+  offset: 0, 0
+  index: -1
+2d
+  rotate: false
+  xy: 5, 872
+  size: 91, 93
+  orig: 91, 93
+  offset: 0, 0
+  index: -1
+reset
+  rotate: false
+  xy: 135, 646
+  size: 91, 93
+  orig: 91, 93
+  offset: 0, 0
+  index: -1
+3d
+  rotate: false
+  xy: 135, 744
+  size: 91, 93
+  orig: 91, 93
+  offset: 0, 0
+  index: -1
+sound-on
+  rotate: false
+  xy: 196, 430
+  size: 83, 86
+  orig: 83, 86
+  offset: 0, 0
+  index: -1
+sound-off
+  rotate: false
+  xy: 329, 430
+  size: 83, 86
+  orig: 83, 86
+  offset: 0, 0
+  index: -1
+give-up
+  rotate: false
+  xy: 417, 430
+  size: 82, 86
+  orig: 82, 86
+  offset: 0, 0
+  index: -1
+iso-cam-switch
+  rotate: false
+  xy: 135, 842
+  size: 82, 85
+  orig: 82, 85
+  offset: 0, 0
+  index: -1
+music-off
+  rotate: false
+  xy: 135, 932
+  size: 82, 85
+  orig: 82, 85
+  offset: 0, 0
+  index: -1
+menu
+  rotate: false
+  xy: 231, 646
+  size: 82, 85
+  orig: 82, 85
+  offset: 0, 0
+  index: -1
+pause
+  rotate: false
+  xy: 318, 646
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+black-bg
+  rotate: false
+  xy: 298, 141
+  size: 4, 4
+  orig: 4, 4
+  offset: 0, 0
+  index: -1

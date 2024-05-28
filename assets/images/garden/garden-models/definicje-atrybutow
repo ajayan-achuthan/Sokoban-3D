@@ -1,0 +1,22 @@
+Ciąg atrybutów powinien się składać minimum z 8 znaków. Domyślny znak to "-".
+
+* Pozycja 1 określa główny typ danego obiektu, może przyjąć wartości:
+  0 - kafel nieprzejezdny
+  1 - kafel przejezdny
+  d - element dekoracyjny
+  b - przestawny box
+  h - bohater
+
+*Pozycja 2 określa najważniejszą cechę danego obiektu
+  x - kafel na który trzeba ustawić box
+  f - świetliki(firefly), jeśli na drugiej pozycji stoi 'f' na pierwszej zawsze powinno znajdować się 'd'
+  t - od tutorial
+
+*Pozycja 3 
+  w - obiekt żelowaty (od whimpy)
+  ^ - Tutorial N, na pozycji 2 musi byc 't'
+  > - Tutorial E, na pozycji 2 musi byc 't'
+  v - Tutorial S, na pozycji 2 musi byc 't'
+  < - Tutorial W, na pozycji 2 musi byc 't'
+  x - Tutorialowe okno "box->X", na pozycji 2 musi byc 't'
+  u - tutorialowe 'undo move', na pozycji 2 musi byc 't'

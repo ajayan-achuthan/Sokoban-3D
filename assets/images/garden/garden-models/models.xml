@@ -1,0 +1,393 @@
+<?xml version="1.0"?>
+<objects>
+
+	
+	<model>
+		<name>floor-a</name>
+		<mesh-path>garden-models/in-game-models/floor-a.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/texture.png</texture-path>
+		<is_decoration>false</is_decoration>
+		<editable_atributes>0-------</editable_atributes>
+	</model>
+	
+		<model>
+		<name>sum-1</name>
+		<mesh-path>garden-models/in-game-models/sum-1.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/texture.png</texture-path>
+		<is_decoration>false</is_decoration>
+		<editable_atributes>0-------</editable_atributes>
+	</model>
+	
+	<model>
+		<name>sum-2</name>
+		<mesh-path>garden-models/in-game-models/sum-2.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/texture.png</texture-path>
+		<is_decoration>false</is_decoration>
+		<editable_atributes>0-------</editable_atributes>
+	</model>
+	
+	<model>
+		<name>sum-4</name>
+		<mesh-path>garden-models/in-game-models/sum-4.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/texture.png</texture-path>
+		<is_decoration>false</is_decoration>
+		<editable_atributes>0-------</editable_atributes>
+	</model>
+	
+	<model>
+		<name>sum-4a</name>
+		<mesh-path>garden-models/in-game-models/sum-4a.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/texture.png</texture-path>
+		<is_decoration>false</is_decoration>
+		<editable_atributes>0-------</editable_atributes>
+	</model>
+	
+	<model>
+		<name>sum-4b</name>
+		<mesh-path>garden-models/in-game-models/sum-4b.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/texture.png</texture-path>
+		<is_decoration>false</is_decoration>
+		<editable_atributes>0-------</editable_atributes>
+	</model>
+	
+	<model>
+		<name>sum-4c</name>
+		<mesh-path>garden-models/in-game-models/sum-4c.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/texture.png</texture-path>
+		<is_decoration>false</is_decoration>
+		<editable_atributes>0-------</editable_atributes>
+	</model>
+	
+	<model>
+		<name>sum-4d</name>
+		<mesh-path>garden-models/in-game-models/sum-4d.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/texture.png</texture-path>
+		<is_decoration>false</is_decoration>
+		<editable_atributes>0-------</editable_atributes>
+	</model>
+	
+	<model>
+		<name>sum-5</name>
+		<mesh-path>garden-models/in-game-models/sum-5.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/texture.png</texture-path>
+		<is_decoration>false</is_decoration>
+		<editable_atributes>0-------</editable_atributes>
+	</model>
+	
+	<model>
+		<name>s-decor-1</name>
+		<mesh-path>garden-models/in-game-models/s-decor-1.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/texture.png</texture-path>
+		<is_decoration>false</is_decoration>
+		<editable_atributes>0-------</editable_atributes>
+	</model>
+
+	<model>
+		<name>s-decor-2</name>
+		<mesh-path>garden-models/in-game-models/s-decor-2.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/texture.png</texture-path>
+		<is_decoration>false</is_decoration>
+		<editable_atributes>0-------</editable_atributes>
+	</model>
+
+	<model>
+		<name>s-decor-abc</name>
+		<mesh-path>garden-models/in-game-models/s-decor-abc.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/texture.png</texture-path>
+		<is_decoration>false</is_decoration>
+		<editable_atributes>0-------</editable_atributes>
+	</model>
+
+	<model>
+		<name>s-decor-side</name>
+		<mesh-path>garden-models/in-game-models/s-decor-side.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/texture.png</texture-path>
+		<is_decoration>false</is_decoration>
+		<editable_atributes>0-------</editable_atributes>
+	</model>
+	
+	<model>
+		<name>s-decor-side-2</name>
+		<mesh-path>garden-models/in-game-models/s-decor-side-2.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/texture.png</texture-path>
+		<is_decoration>false</is_decoration>
+		<editable_atributes>0-------</editable_atributes>
+	</model>
+
+
+	<model>
+		<name>path</name>
+		<mesh-path>garden-models/in-game-models/path.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/texture.png</texture-path>
+		<is_decoration>false</is_decoration>
+		<editable_atributes>1-------</editable_atributes>
+	</model>
+	
+	<model>
+		<name>path-goal</name>
+		<mesh-path>garden-models/in-game-models/path-goal.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/texture.png</texture-path>
+		<is_decoration>false</is_decoration>
+		<editable_atributes>1x------</editable_atributes>
+	</model>
+	
+	<model>
+		<name>path-question</name>
+		<mesh-path>garden-models/in-game-models/path-q.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/texture.png</texture-path>
+		<is_decoration>false</is_decoration>
+		<editable_atributes>1x------</editable_atributes>
+	</model>
+	
+	<model>
+		<name>edge-a</name>
+		<mesh-path>garden-models/in-game-models/edge-a.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/texture.png</texture-path>
+		<is_decoration>false</is_decoration>
+		<editable_atributes>0-------</editable_atributes>
+	</model>
+	
+	<model>
+		<name>edge-supplement</name>
+		<mesh-path>garden-models/in-game-models/edge-supplement.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/texture.png</texture-path>
+		<is_decoration>false</is_decoration>
+		<editable_atributes>0-------</editable_atributes>
+	</model>
+	
+		<model>
+		<name>edge-supplement-1</name>
+		<mesh-path>garden-models/in-game-models/edge-supplement-1.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/texture.png</texture-path>
+		<is_decoration>false</is_decoration>
+		<editable_atributes>0-------</editable_atributes>
+	</model>
+	
+	<model>
+		<name>edge-supplement-2</name>
+		<mesh-path>garden-models/in-game-models/edge-supplement-2.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/texture.png</texture-path>
+		<is_decoration>false</is_decoration>
+		<editable_atributes>0-------</editable_atributes>
+	</model>
+	
+	<model>
+		<name>edge-s-1</name>
+		<mesh-path>garden-models/in-game-models/edge-s-1.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/texture.png</texture-path>
+		<is_decoration>false</is_decoration>
+		<editable_atributes>0-------</editable_atributes>
+	</model>
+	
+	<model>
+		<name>island</name>
+		<mesh-path>garden-models/in-game-models/fat-floor-island.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/texture.png</texture-path>
+		<is_decoration>false</is_decoration>
+		<editable_atributes>0-------</editable_atributes>
+	</model>
+	
+	<model>
+		<name>peninsula</name>
+		<mesh-path>garden-models/in-game-models/fat-floor-p.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/texture.png</texture-path>
+		<is_decoration>false</is_decoration>
+		<editable_atributes>0-------</editable_atributes>
+	</model>
+	
+	<model>
+		<name>fat-floor-two</name>
+		<mesh-path>garden-models/in-game-models/fat-floor-two.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/texture.png</texture-path>
+		<is_decoration>false</is_decoration>
+		<editable_atributes>0-------</editable_atributes>
+	</model>
+	
+	<model>
+		<name>hero</name>
+		<mesh-path>garden-models/in-game-models/hero.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/hero.png</texture-path>
+		<is_decoration>true</is_decoration>
+		<editable_atributes>h-------</editable_atributes>
+		<additional_textures>
+			<texture_path>garden-models/in-game-models/hero-tired.png</texture_path>
+			<texture_path>garden-models/in-game-models/hero-blink.png</texture_path>
+		</additional_textures>
+	</model>
+	
+	<model>
+		<name>box</name>
+		<mesh-path>garden-models/in-game-models/box.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/box.png</texture-path>
+		<is_decoration>true</is_decoration>
+		<editable_atributes>b-------</editable_atributes>
+		<additional_textures>
+			<texture_path>garden-models/in-game-models/box-on.png</texture_path>
+		</additional_textures>
+	</model>
+	
+	<model>
+		<name>flower-b</name>
+		<mesh-path>garden-models/in-game-models/flower-b.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/flower-b.png</texture-path>
+		<is_decoration>true</is_decoration>
+		<editable_atributes>d-w-----</editable_atributes>
+	</model>
+	
+	<model>
+		<name>flower-b-2</name>
+		<mesh-path>garden-models/in-game-models/flower-b-2.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/flower-b.png</texture-path>
+		<is_decoration>true</is_decoration>
+		<editable_atributes>d-w-----</editable_atributes>
+	</model>
+	
+	<model>
+		<name>flower-l</name>
+		<mesh-path>garden-models/in-game-models/flower-l.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/flower-l.png</texture-path>
+		<is_decoration>true</is_decoration>
+		<editable_atributes>d-------</editable_atributes>
+	</model>
+	
+	<model>
+		<name>flower-l-2</name>
+		<mesh-path>garden-models/in-game-models/flower-l-2.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/flower-l.png</texture-path>
+		<is_decoration>true</is_decoration>
+		<editable_atributes>d-------</editable_atributes>
+	</model>
+	
+	<model>
+		<name>flower-r</name>
+		<mesh-path>garden-models/in-game-models/rose.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/rose.png</texture-path>
+		<is_decoration>true</is_decoration>
+		<editable_atributes>d-------</editable_atributes>
+	</model>
+	
+	<model>
+		<name>flower-r-2</name>
+		<mesh-path>garden-models/in-game-models/rose-1.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/rose.png</texture-path>
+		<is_decoration>true</is_decoration>
+		<editable_atributes>d-------</editable_atributes>
+	</model>
+
+	<model>
+		<name>flower-s</name>
+		<mesh-path>garden-models/in-game-models/flower-s.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/flower-s.png</texture-path>
+		<is_decoration>true</is_decoration>
+		<editable_atributes>d-w-----</editable_atributes>
+	</model>
+	
+	<model>
+		<name>cactus</name>
+		<mesh-path>garden-models/in-game-models/cactus.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/cactus.png</texture-path>
+		<is_decoration>true</is_decoration>
+		<editable_atributes>d-w-----</editable_atributes>
+	</model>
+
+	<model>
+		<name>tree</name>
+		<mesh-path>garden-models/in-game-models/tree.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/tree.png</texture-path>
+		<is_decoration>true</is_decoration>
+		<editable_atributes>d-w-----</editable_atributes>
+	</model>
+	
+	<model>
+		<name>tree-2</name>
+		<mesh-path>garden-models/in-game-models/tree02.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/tree02.png</texture-path>
+		<is_decoration>true</is_decoration>
+		<editable_atributes>d-w-----</editable_atributes>
+	</model>
+	
+	<model>
+		<name>stone</name>
+		<mesh-path>garden-models/in-game-models/stone.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/stone.png</texture-path>
+		<is_decoration>true</is_decoration>
+		<editable_atributes>d-------</editable_atributes>
+	</model>
+
+	<model>
+		<name>stone-2</name>
+		<mesh-path>garden-models/in-game-models/stone-2.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/stone.png</texture-path>
+		<is_decoration>true</is_decoration>
+		<editable_atributes>d-------</editable_atributes>
+	</model>
+
+	<model>
+		<name>sapling</name>
+		<mesh-path>garden-models/in-game-models/sapling.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/sapling.png</texture-path>
+		<is_decoration>true</is_decoration>
+		<editable_atributes>d-------</editable_atributes>
+	</model>
+	
+	<model>
+		<name>sapling-a</name>
+		<mesh-path>garden-models/in-game-models/sapling-a.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/sapling-a.png</texture-path>
+		<is_decoration>true</is_decoration>
+		<editable_atributes>d-------</editable_atributes>
+	</model>
+	
+	<model>
+		<name>leaf</name>
+		<mesh-path>garden-models/in-game-models/leaf.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/sapling-a.png</texture-path>
+		<is_decoration>true</is_decoration>
+		<editable_atributes>d-w-----</editable_atributes>
+	</model>
+	
+	<model>
+		<name>leaf2</name>
+		<mesh-path>garden-models/in-game-models/leaf2.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/sapling-a.png</texture-path>
+		<is_decoration>true</is_decoration>
+		<editable_atributes>d-w-----</editable_atributes>
+	</model>
+	
+	<model>
+		<name>pond</name>
+		<mesh-path>garden-models/in-game-models/pond.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/pond.png</texture-path>
+		<is_decoration>true</is_decoration>
+		<editable_atributes>d-------</editable_atributes>
+	</model>
+
+	<model>
+		<name>firefly</name>
+		<mesh-path>garden-models/in-game-models/box.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/firefly.png</texture-path>
+		<is_decoration>true</is_decoration>
+		<editable_atributes>df-------</editable_atributes>
+	</model>
+
+	<model>
+		<name>shadow</name>
+		<mesh-path>garden-models/in-game-models/shadow-mesh.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/shadow-hero.png</texture-path>
+		<is_decoration>true</is_decoration>
+		<editable_atributes>-------</editable_atributes>
+		<additional_textures>
+			<texture_path>garden-models/in-game-models/shadow-box.png</texture_path>
+			<texture_path>garden-models/in-game-models/shadow-tile-hint.png</texture_path>
+		</additional_textures>
+	</model>
+
+	<model>
+		<name>hint-shadow</name>
+		<mesh-path>garden-models/in-game-models/shadow-mesh.obj</mesh-path>
+		<texture-path>garden-models/in-game-models/shadow-tile-hint.png</texture-path>
+		<is_decoration>true</is_decoration>
+		<editable_atributes>-------</editable_atributes>
+	</model>
+
+</objects>

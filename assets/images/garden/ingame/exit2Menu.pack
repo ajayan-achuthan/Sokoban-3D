@@ -1,0 +1,26 @@
+
+exit2menu1.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+exit
+  rotate: false
+  xy: 5, 5
+  size: 603, 412
+  orig: 603, 412
+  offset: 0, 0
+  index: -1
+no
+  rotate: false
+  xy: 613, 5
+  size: 91, 93
+  orig: 91, 93
+  offset: 0, 0
+  index: -1
+yes
+  rotate: false
+  xy: 709, 5
+  size: 91, 93
+  orig: 91, 93
+  offset: 0, 0
+  index: -1
