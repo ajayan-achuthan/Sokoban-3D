@@ -48,6 +48,8 @@ class LevelScreen(Screen):
 class GameScreen(Screen):
     collection_name = StringProperty()
     level_name = StringProperty()
+    rows = NumericProperty(1)
+    cols = NumericProperty(1)
     moves = NumericProperty(0)
     pushes = NumericProperty(0)
     def __init__(self,**kwargs):
@@ -57,6 +59,8 @@ class GameScreen(Screen):
         app = App.get_running_app()
         self.collection_name = app.collection
         self.level_name = str(app.level)
+        self.rows = rows
+        self.cols = cols
         self.ids.game_grid.clear_widgets()
         self.game_square = AnchorLayout(anchor_x= 'center',anchor_y= 'center')
         self.game = SokobanGame(rows=rows,cols=cols,matrix=matrix)
@@ -68,8 +72,9 @@ class GameScreen(Screen):
         self.moves = moves
         self.pushes =pushes
     def on_size(self, *args):
+        grid = min(self.game_square.size)/max(self.rows,self.cols)
         self.game.size_hint = (None,None)
-        self.game.size = (min(self.game_square.size),min(self.game_square.size))
+        self.game.size = (grid*self.cols,grid*self.rows)
 
 class GameCompleted(Screen):
     def __init__(self,**kwargs):

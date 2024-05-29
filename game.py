@@ -20,14 +20,20 @@ class SokobanGame(GridLayout):
         self.queue = queue.LifoQueue()
         self.cols = cols
         self.rows = rows
-        self.matrix = [[' 'for i in range(cols)]for j in range(rows)]
+        self.matrix = [['-'for i in range(cols)]for j in range(rows)]
         self.moves = 0
         self.pushes = 0
         for i in range(len(matrix)):
             matrix[i] = list(matrix[i])
         for i in range(len(matrix)):
+            flag = 0
             for j in range(len(matrix[i])):
-                self.matrix[i][j] = matrix[i][j]
+                if matrix[i][j] != ' ':
+                    flag = 1
+                    self.matrix[i][j] = matrix[i][j]
+                else:
+                    if flag != 0:
+                        self.matrix[i][j] = matrix[i][j]
         self.print_game()
 
     def is_valid_value(self,char):
@@ -197,7 +203,6 @@ class SokobanGame(GridLayout):
             app = App.get_running_app()
             app.show_completed()
 
-    
     def print_game(self):
         self.clear_widgets()
         app = App.get_running_app()
@@ -216,7 +221,9 @@ class SokobanGame(GridLayout):
                     tile = Image(source =self.image_path+'box_docked.png',allow_stretch=True)
                 elif self.matrix[row][col] == '+':
                     tile = Image(source =self.image_path+'worker_dock.png',allow_stretch=True)
-                else:
+                elif self.matrix[row][col] == ' ':
                     tile = Image(source =self.image_path+'floor.png',allow_stretch=True)
+                else:
+                    tile = Image(source =self.image_path+'floor.png',allow_stretch=True,opacity = 0)
                 self.add_widget(tile)
     
