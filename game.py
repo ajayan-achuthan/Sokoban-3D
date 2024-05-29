@@ -12,6 +12,7 @@ from kivy.graphics import Color, Rectangle
 import queue
 
 app = App.get_running_app()
+
 class SokobanGame(GridLayout):
     def __init__(self, rows,cols,matrix,**kwargs):
         super(SokobanGame, self).__init__(**kwargs)
@@ -217,8 +218,5 @@ class SokobanGame(GridLayout):
                     tile = Image(source =self.image_path+'worker_dock.png',allow_stretch=True)
                 else:
                     tile = Image(source =self.image_path+'floor.png',allow_stretch=True)
-                
-                #tile.bind(size=self.update_rect, pos=self.update_rect)
-                #self.tiles[row][col] = tile
                 self.add_widget(tile)
     

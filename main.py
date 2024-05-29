@@ -3,6 +3,7 @@ from kivy.app import App
 from kivy.core.window import Window
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.gridlayout import GridLayout
+from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.uix.widget import Widget
@@ -11,12 +12,13 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.clock import mainthread
 from kivy.storage.jsonstore import JsonStore
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.anchorlayout import AnchorLayout
+from kivy.graphics import Color,RoundedRectangle
 import queue
 from game import SokobanGame
 import utils #available_collections
 
 from kivy.core.text import LabelBase
-# Register the custom font
 LabelBase.register(name='clearsans', fn_regular='assets/fonts/ClearSans-Bold.ttf')
 
 class MainScreen(Screen):
@@ -56,11 +58,18 @@ class GameScreen(Screen):
         self.collection_name = app.collection
         self.level_name = str(app.level)
         self.ids.game_grid.clear_widgets()
+        self.game_square = AnchorLayout(anchor_x= 'center',anchor_y= 'center')
         self.game = SokobanGame(rows=rows,cols=cols,matrix=matrix)
-        self.ids.game_grid.add_widget(self.game)
+        self.game_square.add_widget(self.game)
+        self.game_square.bind(size=self.on_size)
+        self.ids.game_grid.add_widget(self.game_square)
+        
     def update_moves(self,moves,pushes):
         self.moves = moves
         self.pushes =pushes
+    def on_size(self, *args):
+        self.game.size_hint = (None,None)
+        self.game.size = (min(self.game_square.size),min(self.game_square.size))
 
 class GameCompleted(Screen):
     def __init__(self,**kwargs):
