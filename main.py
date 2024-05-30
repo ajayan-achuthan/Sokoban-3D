@@ -19,6 +19,7 @@ from game import SokobanGame
 import utils #available_collections
 
 from kivy.core.text import LabelBase
+
 LabelBase.register(name='clearsans', fn_regular='assets/fonts/ClearSans-Bold.ttf')
 
 class MainScreen(Screen):
@@ -128,5 +129,5 @@ class SokobanApp(App):
         self.root.current = 'levels'
 
 if __name__ == '__main__':
-    Window.size = (375, 800)
+    #Window.size = (375, 800)
     SokobanApp().run()

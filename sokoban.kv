@@ -6,48 +6,60 @@ ScreenManager:
     GameScreen:
       
 <MainScreen>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'assets/images/new_game/new_game_bg.png'
     name: 'main'
     BoxLayout:
         orientation: 'vertical'
-        padding: 10
-        spacing: 10
-        Button:
-            text: 'SOKOBAN'
-            size_hint_y:  0.3
-            on_release: app.new_game(self)
+        padding: 20
+        spacing: 20
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y : 0.5
+            Label:
+                text: " "
+                background_color: 0, 0, 0, 0
         Button:
             text: 'New game'
-            size_hint_y:  0.14
+            size_hint_y:  0.25
+            background_normal: 'assets/images/new_game/new_game_btn.png'
+            background_down: 'assets/images/new_game/new_game_btn.png'
             on_release: app.new_game(self)
-        Button:
-            text: 'Continue game'
-            size_hint_y:  0.14
-            on_release: app.continue_game(self)
-        Button:
-            text: 'Settings'
-            size_hint_y:  0.14
-            on_release: app.settings(self)
-        Button:
-            text: 'High scores'
-            size_hint_y:  0.14
-            on_release: app.high_scores(self)
-        Button:
-            text: 'Exit'
-            size_hint_y:  0.14
-            on_release: app.exit(self)
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y : 0.25
+            padding: [20,0]
+            spacing: 20
+            Button:
+                text: 'Settings'
+                background_normal: 'assets/images/new_game/settings.png'
+                background_down: 'assets/images/new_game/settings.png'
+                on_release: app.settings(self)
+            Button:
+                text: 'Exit'
+                background_normal: 'assets/images/new_game/exit.png'
+                background_down: 'assets/images/new_game/exit.png'
+                on_release: app.exit(self)
 
 <NewGameScreen>:
     name: 'new_game'
+    canvas:
+        Color:
+            rgba: utils.get_color_from_hex('#fbf8ef')
+        Rectangle:
+            pos: self.pos
+            size: self.size
     BoxLayout:
         orientation: 'vertical'
         padding: 10
         spacing: 10
-
         Label:
-            text: 'CHOOSE A COLLECTION'
+            text: 'COLLECTIONS'
             size_hint_y: None
             height: 50
-
         ScrollView:
             BoxLayout:
                 id: collection_grid
