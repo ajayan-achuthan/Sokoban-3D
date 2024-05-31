@@ -14,17 +14,10 @@ ScreenManager:
     name: 'main'
     BoxLayout:
         orientation: 'vertical'
-        padding: 20
-        spacing: 20
-        BoxLayout:
-            orientation: 'horizontal'
-            size_hint_y : 0.5
-            Label:
-                text: " "
-                background_color: 0, 0, 0, 0
         Button:
             text: 'New game'
-            size_hint_y:  0.25
+            size_hint_y:  0.7
+            pos_hint : {'center_x': .5, 'y': 0}
             background_normal: 'assets/images/new_game/new_game_btn.png'
             background_down: 'assets/images/new_game/new_game_btn.png'
             on_release: app.new_game(self)
