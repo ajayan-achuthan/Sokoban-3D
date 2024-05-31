@@ -32,9 +32,9 @@ class NewGameScreen(Screen):
         app = App.get_running_app()
         for i in slcs:
             complete,total = utils.count_completed(i)
-            button = Button(text=f"{i} {complete}/{total}",size_hint_y= None, height= 50,on_release=lambda a,curr=i:app.show_levels(self,curr))
+            button = Button(text=f"{i} {complete}/{total}",size_hint_y= None,
+                            height = 90,on_release=lambda a,curr=i:app.show_levels(self,curr))
             self.ids.collection_grid.add_widget(button)
-
 class LevelScreen(Screen):
     collection_name = StringProperty()
     def on_enter(self):
@@ -129,5 +129,5 @@ class SokobanApp(App):
         self.root.current = 'levels'
 
 if __name__ == '__main__':
-    #Window.size = (375, 800)
+    Window.size = (290, 645)
     SokobanApp().run()

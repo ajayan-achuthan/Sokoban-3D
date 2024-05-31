@@ -17,7 +17,11 @@ def level_finder(collection,level):
 def count_levels(collection):
     tree = ET.parse(f'collections/{collection}.slc')
     root = tree.getroot()
-    return len(root[4])
+    for child in root:
+        if child.tag =='LevelCollection':
+            levels = child
+            break
+    return len(levels)
 
 def available_collections():
     slcs = os.listdir(f'collections')

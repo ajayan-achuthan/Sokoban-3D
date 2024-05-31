@@ -1,4 +1,7 @@
 #:import utils kivy.utils
+<ImageButton@ButtonBehavior+Image>
+    allow_stretch: True
+    keep_ratio:True
 ScreenManager:
     MainScreen:
     NewGameScreen:
@@ -10,62 +13,86 @@ ScreenManager:
         Rectangle:
             pos: self.pos
             size: self.size
-            source: 'assets/images/new_game/new_game_bg.png'
+            source: 'assets/images/new_game/main_bg.png'
     name: 'main'
+    FloatLayout:
+        size_hint: (1,1)
+        pos_hint :{'y':0}
+        Image:
+            source: 'assets/images/new_game/main_undergrass_full.png'
+            pos_hint: {'y': 0,'center_x':0.5}
+            size_hint_x: 1
+            allow_stretch: False
+            keep_ratio: True
     BoxLayout:
         orientation: 'vertical'
-        Button:
-            text: 'New game'
-            size_hint_y:  0.7
-            pos_hint : {'center_x': .5, 'y': 0}
-            background_normal: 'assets/images/new_game/new_game_btn.png'
-            background_down: 'assets/images/new_game/new_game_btn.png'
-            on_release: app.new_game(self)
+        BoxLayout:
+            size_hint_y : 0.66
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y : 0.12
+            Button:
+                text: ''
+                size_hint_x: 0.6
+                pos_hint : {'center_x': .5, 'y': 0}
+                background_normal: 'assets/images/new_game/main_start_btn.png'
+                background_down: 'assets/images/new_game/main_start_btn.png'
+                on_release: app.new_game(self)
+        BoxLayout:
+            size_hint_y : 0.039
         BoxLayout:
             orientation: 'horizontal'
-            size_hint_y : 0.25
-            padding: [20,0]
-            spacing: 20
-            Button:
-                text: 'Settings'
-                background_normal: 'assets/images/new_game/settings.png'
-                background_down: 'assets/images/new_game/settings.png'
+            size_hint_y : 0.085
+            size_hint_x: 0.6
+            pos_hint: {'center_x':0.5}
+            ImageButton:
+                source : 'assets/images/new_game/main_settings_btn.png'
+                size_hint_x: 0.8
+                pos_hint : {'x': 0}
                 on_release: app.settings(self)
-            Button:
-                text: 'Exit'
-                background_normal: 'assets/images/new_game/exit.png'
-                background_down: 'assets/images/new_game/exit.png'
+            BoxLayout:
+                size_hint_y : 0.6
+            ImageButton:
+                source : 'assets/images/new_game/main_exit_btn.png'
+                size_hint_x: 0.8
+                pos_hint : {'right': 1}
                 on_release: app.exit(self)
+        BoxLayout:
+            size_hint_y : 0.096
+    
 
 <NewGameScreen>:
     name: 'new_game'
     canvas:
         Color:
-            rgba: utils.get_color_from_hex('#fbf8ef')
+            rgba: utils.get_color_from_hex('#1a1a1a')
         Rectangle:
             pos: self.pos
             size: self.size
     BoxLayout:
         orientation: 'vertical'
-        padding: 10
-        spacing: 10
+        pos_hint: {'center_x':0.5}
+        BoxLayout:
+            size_hint_y : 0.075
         Label:
-            text: 'COLLECTIONS'
-            size_hint_y: None
-            height: 50
+            text: 'Collections'
+            size_hint_y: 0.068
+            size_hint_x: 0.8
+            pos_hint: {'center_x':0.5}
         ScrollView:
+            pos_hint: {'center_x':0.5,'top':1}
+    	    size_hint_x: 0.8
+            size_hint_y: 0.8
             BoxLayout:
                 id: collection_grid
                 orientation: 'vertical'
-                size_hint_y: None
+                size_hint_y : None
                 height: self.minimum_height
-                spacing: 10
+                pos_hint: {'center_x':0.5,'top':1}
+                spacing: 20
+        BoxLayout:
+            size_hint_y : 0.089
 
-        Button:
-            text: 'Back'
-            size_hint_y: None
-            height: 50
-            on_release: app.back_to_main(self)
 
 <LevelScreen>:
     name: 'levels'
