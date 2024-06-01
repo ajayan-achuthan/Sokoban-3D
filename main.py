@@ -19,6 +19,7 @@ from game import SokobanGame
 import utils #available_collections
 
 from kivy.core.text import LabelBase
+from kivy.lang import Builder
 
 LabelBase.register(name='clearsans', fn_regular='assets/fonts/ClearSans-Bold.ttf')
 
@@ -32,8 +33,14 @@ class NewGameScreen(Screen):
         app = App.get_running_app()
         for i in slcs:
             complete,total = utils.count_completed(i)
-            button = Button(text=f"{i} {complete}/{total}",size_hint_y= None,
-                            height = 90,on_release=lambda a,curr=i:app.show_levels(self,curr))
+            # button = ImageButton(source = 'assets/images/collections/collection_btn.png',size_hint_x = 1)
+            button = Button(text=f"{i} {complete}/{total}",
+                            halign= 'left',
+                            valign= 'center',
+                            size_hint_y= None,
+                            background_normal = 'assets/images/collections/collection_btn.png',
+                            background_down = 'assets/images/collections/collection_btn.png',
+                            height = self.ids.collection_scroll.height*0.1,on_release=lambda a,curr=i:app.show_levels(self,curr))
             self.ids.collection_grid.add_widget(button)
 class LevelScreen(Screen):
     collection_name = StringProperty()
