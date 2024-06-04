@@ -41,11 +41,11 @@ def is_completed(collection,level):
     if collection in store.keys():
         completed = store.get(collection)['completed']
         if level in completed:
-            return (1, 1, 0, 1)
+            return True
         else:
-            return (0.5, 0.5, 0.5, 1)
+            return False
     else:
-        return (0.5, 0.5, 0.5, 1)
+        return False
     
 def count_completed(collection):
     

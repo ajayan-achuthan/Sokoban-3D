@@ -63,7 +63,7 @@ ScreenManager:
 
 <NewGameScreen>:
     name: 'new_game'
-    canvas:
+    canvas.before:
         Color:
             rgba: utils.get_color_from_hex('#1a1a1a')
         Rectangle:
@@ -108,7 +108,7 @@ ScreenManager:
 
 <LevelScreen>:
     name: 'levels'
-    canvas:
+    canvas.before:
         Color:
             rgba: utils.get_color_from_hex('#1a1a1a')
         Rectangle:
@@ -120,6 +120,11 @@ ScreenManager:
         BoxLayout:
             size_hint_y : 0.075
         Label:
+            canvas.before:
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: 'assets/images/levels/level_up.png'
             text: root.collection_name
             halign: 'left'
             valign: 'center'
@@ -127,27 +132,26 @@ ScreenManager:
             size_hint_x: 0.8
             pos_hint: {'center_x':0.5}
         ScrollView:
-            BoxLayout:
-                orientation: 'vertical'
-                size_hint_y: None
+            canvas.before:
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: 'assets/images/levels/level_down.png'
+            id: level_scroll
+            pos_hint: {'center_x':0.5,'top':1}
+            size_hint_x: 0.8
+            size_hint_y: 0.8
+            GridLayout:
+                id: level_grid
+                cols: 4
+                size_hint_y : None
                 height: self.minimum_height
-                spacing: 10
-
-                GridLayout:
-                    id: level_grid
-                    cols: 4
-                    size_hint_y: None
-                    height: self.minimum_height
-                    spacing: 10
-        Button:
-            text: 'Back'
-            size_hint_y: None
-            height: 50
-            on_release: app.back_to_new_game(self)
+                pos_hint: {'center_x':0.5,'top':1}
+                spacing: 20
 
 <GameScreen>:
     name: 'game'
-    canvas:
+    canvas.before:
         Rectangle:
             pos: self.pos
             size: self.size
@@ -157,7 +161,7 @@ ScreenManager:
         BoxLayout:
             size_hint_y: 0.05
         BoxLayout:
-            canvas:
+            canvas.before:
                 Rectangle:
                     pos: self.pos
                     size: self.size
@@ -166,10 +170,67 @@ ScreenManager:
             size_hint_y: 0.1
             size_hint_x: 0.94
             pos_hint: {'center_x':0.5}
-            Label:
-                id: pushes_label
-            Label:
-                id: moves_label
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_x : 0.566
+                Label:
+                    text:'Level '+ root.level_name 
+                    color : 0.435, 0.4, 0.361, 1
+                    font_name : 'clearsans'
+                    font_size: 50
+                    markup: True
+                    halign :'left'
+                    valign : "middle"
+                Label:
+                    text:root.collection_name 
+                    color : 0.435, 0.4, 0.361, 1
+                    font_name : 'clearsans'
+                    font_size: 18
+                    markup: True
+                    halign :'left'
+                    valign : "middle"
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_x : 0.217
+                canvas.before:
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                        source: 'assets/images/game/game_moves.png'
+                Label:
+                    text:'MOVES' 
+                    size_hint_y: 0.3
+                    font_name : 'clearsans'
+                    color : 0.98, 0.984, 0.98,1
+                    font_size: 12
+                    font_name : 'clearsans'
+                Label:
+                    id: moves_label
+                    text:"{}".format(root.moves)
+                    color : 0.98, 0.984, 0.98,1
+                    font_size: 40
+                    font_name : 'clearsans'
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_x : 0.217
+                canvas.before:
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                        source: 'assets/images/game/game_moves.png'
+                Label:
+                    text:'PUSHESS' 
+                    size_hint_y: 0.3
+                    font_name : 'clearsans'
+                    color : 0.98, 0.984, 0.98,1
+                    font_size: 12
+                    font_name : 'clearsans'
+                Label:
+                    id: pushes_label
+                    text:"{}".format(root.pushes)
+                    color : 0.98, 0.984, 0.98,1
+                    font_size: 40
+                    font_name : 'clearsans'
         AnchorLayout:
             size_hint_y: 0.568
             size_hint_x: 0.94
@@ -178,15 +239,53 @@ ScreenManager:
                 id: game_grid
                 cols: 1
                 spacing: 0
-        GridLayout:
-            canvas:
+        BoxLayout:
+            canvas.before:
                 Rectangle:
                     pos: self.pos
                     size: self.size
                     source: 'assets/images/game/game_bottom_bar.png'
-            rows: 1
+            orientation: 'horizontal'
             size_hint_y: 0.218
             size_hint_x: 0.94
             pos_hint: {'center_x':0.5}
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_x:.17
+                padding:[0,20]
+                ImageButton:
+                    source : 'assets/images/game/game_back_btn.png'
+                    on_press:x: root.game.unmove()
+                ImageButton:
+                    source : 'assets/images/game/game_reset_btn.png'
+                    on_press: root.game.reset()
+                ImageButton:
+                    source : 'assets/images/game/game_exit_btn.png'
+                    on_press:app.back_to_show_levels()
+            BoxLayout:
+                size_hint_x:.278
+            BoxLayout:
+                size_hint_x:.552
+                RelativeLayout:
+                    ImageButton:
+                        source : 'assets/images/game/game_up_btn.png'
+                        pos_hint: {'center_x':0.5,'top':1}
+                        size_hint_y:0.3
+                        on_press: root.game.move(0,-1, True)
+                    ImageButton:
+                        source : 'assets/images/game/game_down_btn.png'
+                        pos_hint: {'center_x':0.5,'y':0}
+                        size_hint_y:0.3
+                        on_press: root.game.move(0,1, True)
+                    ImageButton:
+                        source : 'assets/images/game/game_left_btn.png'
+                        pos_hint: {'x':0,'center_y':0.5}
+                        size_hint_x:0.3
+                        on_press: root.game.move(-1,0, True)
+                    ImageButton:
+                        source : 'assets/images/game/game_right_btn.png'
+                        pos_hint: {'right':1,'center_y':0.5}
+                        size_hint_x:0.3
+                        on_press: root.game.move(1,0, True)
         BoxLayout:
             size_hint_y: 0.064

@@ -49,8 +49,21 @@ class LevelScreen(Screen):
         self.collection_name = app.collection.upper()
         self.ids.level_grid.clear_widgets()
         for i in range(app.no_levels):
-            bg_color = utils.is_completed(app.collection,i+1)
-            button = Button(text=str(i+1),size_hint_y= None, height= 50, background_color=bg_color,on_release=lambda a,curr=i:app.show_game(curr+1))
+            if utils.is_completed(app.collection,i+1):
+                button = Button(text=str(i+1),
+                                size_hint_y= None,
+                                background_normal = 'assets/images/levels/level_completed.png',
+                                background_down = 'assets/images/levels/level_completed.png',
+                                width = self.ids.level_scroll.width*0.2,
+                                on_release=lambda a,curr=i:app.show_game(curr+1))
+            else:
+                button = Button(text=str(i+1),
+                                size_hint_y= None,
+                                background_normal = 'assets/images/levels/level_pending.png',
+                                background_down = 'assets/images/levels/level_pending.png',
+                                width = self.ids.level_scroll.width*0.2,
+                                on_release=lambda a,curr=i:app.show_game(curr+1))
+                # button = Button(text=str(i+1),size_hint_y= None, height= 50, background_color=bg_color,on_release=lambda a,curr=i:app.show_game(curr+1))
             self.ids.level_grid.add_widget(button)
 
 class GameScreen(Screen):
