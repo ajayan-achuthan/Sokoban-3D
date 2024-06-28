@@ -1,3 +1,4 @@
 waste/
+__pycache__/
 *.ipynb
 ...
